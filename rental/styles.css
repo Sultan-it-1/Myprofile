@@ -1,23 +1,23 @@
+/* styles.css */
+
 body {
     font-family: Arial, sans-serif;
+    direction: rtl;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    box-sizing: border-box;
 }
 
 header {
     background-color: #333;
-    color: #fff;
+    color: white;
     padding: 10px 0;
     text-align: center;
 }
 
 nav ul {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
-    margin: 0;
-    text-align: center;
-    direction: rtl; /* إضافة هذه الخاصية لضمان الترتيب الصحيح من اليمين إلى اليسار */
 }
 
 nav ul li {
@@ -26,62 +26,66 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #fff;
+    color: white;
     text-decoration: none;
 }
 
 main {
     padding: 20px;
-    max-width: 800px;
+    text-align: center;
+}
+
+form {
+    max-width: 600px;
     margin: 0 auto;
+    text-align: left;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+form select, form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+#carList {
+    margin-top: 20px;
 }
 
 .car-item {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    margin: 20px 0;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    display: flex;
-    align-items: center;
-}
-
-.car-item img.car-image {
-    max-width: 150px;
-    margin-right: 20px;
-    border-radius: 5px;
-}
-
-.car-details {
-    flex: 1;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 10px 0;
+    text-align: left;
 }
 
 .car-item h3 {
-    margin: 0;
-    font-size: 1.5em;
+    margin-top: 0;
 }
 
-.car-item p {
-    margin: 10px 0;
-}
-
-.car-item button {
+button {
     padding: 10px 20px;
-    background-color: #28a745;
-    color: #fff;
+    background-color: #007BFF;
+    color: white;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
 }
 
-.car-item button:hover {
-    background-color: #218838;
+button:hover {
+    background-color: #0056b3;
 }
 
-label, select, input[type="datetime-local"] {
-    display: block;
-    margin: 10px 0;
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
     width: 100%;
-    max-width: 300px;
 }
