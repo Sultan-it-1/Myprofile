@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <h3>${car.name}</h3>
             <p>السعر: ${car.price} ريال/اليوم</p>
             <p>${car.details}</p>
-            <button type="button" onclick="rentCar(${car.id}, ${car.price})">استأجر الآن</button>
+            <button onclick="selectCar(${car.id}, ${car.price})">استأجر الآن</button>
         `;
         carList.appendChild(carItem);
     });
@@ -29,31 +29,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const selectedCarId = rentalForm.getAttribute('data-selected-car-id');
         const selectedCarPrice = rentalForm.getAttribute('data-selected-car-price');
-        if (!selectedCarId || !selectedCarPrice) {
-            alert('يرجى اختيار سيارة للاستئجار.');
+
+        if (!selectedCarId || !pickupDate.value || !returnDate.value) {
+            alert('يرجى اختيار السيارة ووقت الاستلام ووقت التسليم.');
             return;
         }
 
+        const startDate = new Date(pickupDate.value);
+        const endDate = new Date(returnDate.value);
+        const timeDiff = endDate - startDate;
+        const daysDiff = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+
+        if (daysDiff <= 0) {
+            alert('يرجى اختيار وقت تسليم صحيح.');
+            return;
+        }
+
+        const totalPrice = daysDiff * selectedCarPrice;
         const pickupMethodValue = pickupMethod.value;
-        const pickupDateValue = new Date(pickupDate.value);
-        const returnDateValue = new Date(returnDate.value);
-
-        if (!pickupDateValue || !returnDateValue || returnDateValue <= pickupDateValue) {
-            alert('يرجى اختيار وقت الاستلام ووقت تسليم صحيح.');
-            return;
-        }
-
-        const rentalDays = Math.ceil((returnDateValue - pickupDateValue) / (1000 * 60 * 60 * 24));
-        const totalPrice = rentalDays * selectedCarPrice;
 
         const url = `https://sultan-it-1.github.io/project-405/payment/?id=${selectedCarId}&pickupMethod=${pickupMethodValue}&pickupDate=${encodeURIComponent(pickupDate.value)}&returnDate=${encodeURIComponent(returnDate.value)}&totalPrice=${totalPrice}`;
         window.location.href = url;
     });
 });
 
-function rentCar(carId, carPrice) {
+function selectCar(carId, carPrice) {
     const rentalForm = document.getElementById('rentalForm');
     rentalForm.setAttribute('data-selected-car-id', carId);
     rentalForm.setAttribute('data-selected-car-price', carPrice);
-    rentalForm.submit();
+    alert(`تم اختيار السيارة بنجاح. يرجى تعبئة وقت الاستلام ووقت التسليم لحساب السعر النهائي.`);
 }
