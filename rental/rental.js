@@ -24,6 +24,14 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function rentCar(carId) {
-    alert('تم اختيار السيارة رقم ' + carId);
-}
+    const pickupMethod = document.getElementById('pickupMethod').value;
+    const rentalDate = document.getElementById('rentalDate').value;
 
+    if (!rentalDate) {
+        alert('يرجى اختيار وقت الإيجار.');
+        return;
+    }
+
+    const url = `https://sultan-it-1.github.io/project-405/payment?id=${carId}&pickupMethod=${pickupMethod}&rentalDate=${encodeURIComponent(rentalDate)}`;
+    window.location.href = url;
+}
