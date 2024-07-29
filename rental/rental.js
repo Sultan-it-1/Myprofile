@@ -43,6 +43,7 @@ function rentCar(carId, carPrice) {
 
     if (returnDate <= pickupDate) {
         alert('يرجى اختيار وقت تسليم صحيح بحيث يكون بعد وقت الاستلام.');
+        alert();
         return;
     }
 
