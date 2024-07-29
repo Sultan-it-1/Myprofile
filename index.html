@@ -10,10 +10,12 @@
         body {
             font-size: 14px;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
+            height: 100vh;
+            background: rgba(194,185,185,1);
         }
-        .v2_4334 {
+        .container {
             width: 100%;
             max-width: 1200px;
             background: rgba(194, 185, 185, 1);
@@ -22,7 +24,7 @@
             align-items: center;
             padding: 20px;
         }
-        .v3_2 {
+        .navbar {
             width: 100%;
             background: rgba(217, 217, 217, 1);
             display: flex;
@@ -30,33 +32,33 @@
             padding: 10px 0;
             box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
         }
-        .v3_3, .v3_4, .v3_5, .v4_6 {
+        .nav-item {
             color: rgba(0, 0, 0, 1);
             font-family: Roboto, sans-serif;
             font-weight: Regular;
             font-size: 24px;
             margin: 0 15px;
         }
-        .v4_13 {
+        .main-content {
             width: 100%;
             max-width: 1000px;
             background: rgba(255, 255, 255, 1);
             margin: 20px 0;
+            text-align: center;
         }
-        .v4_13 img {
+        .main-content img {
             width: 100%;
             height: auto;
         }
-        .v4_15 {
+        .description {
             color: rgba(0, 0, 0, 1);
             text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
             font-family: Roboto Serif, serif;
             font-weight: Light;
             font-size: 32px;
-            text-align: center;
             margin: 20px 0;
         }
-        .v4_16 {
+        .cta-button {
             width: 100%;
             max-width: 484px;
             background: rgba(0, 0, 0, 0.7);
@@ -67,7 +69,7 @@
             align-items: center;
             margin: 20px 0;
         }
-        .v4_17 {
+        .cta-button span {
             color: rgba(255, 254, 254, 1);
             font-family: Roboto, sans-serif;
             font-weight: Regular;
@@ -76,28 +78,28 @@
             padding: 20px;
         }
         @media (max-width: 768px) {
-            .v3_3, .v3_4, .v3_5, .v4_6 {
+            .nav-item {
                 font-size: 18px;
                 margin: 0 10px;
             }
-            .v4_15 {
+            .description {
                 font-size: 24px;
                 padding: 10px;
             }
-            .v4_17 {
+            .cta-button span {
                 font-size: 24px;
             }
         }
         @media (max-width: 480px) {
-            .v3_3, .v3_4, .v3_5, .v4_6 {
+            .nav-item {
                 font-size: 16px;
                 margin: 0 5px;
             }
-            .v4_15 {
+            .description {
                 font-size: 20px;
                 padding: 5px;
             }
-            .v4_17 {
+            .cta-button span {
                 font-size: 20px;
                 padding: 10px;
             }
@@ -106,21 +108,21 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="v2_4334">
-        <div class="v3_2">
-            <span class="v3_3">Home</span>
-            <span class="v3_4">Cars</span>
-            <span class="v3_5">About us</span>
-            <span class="v4_6">Contact us</span>
+    <div class="container">
+        <div class="navbar">
+            <span class="nav-item">Home</span>
+            <span class="nav-item">Cars</span>
+            <span class="nav-item">About us</span>
+            <span class="nav-item">Contact us</span>
         </div>
-        <div class="v4_13">
-            <img src="https://sultan-it-1.github.io/project-405/images/car1.webp" alt="Car Image">
+        <div class="main-content">
+            <img src="/mnt/data/image.png" alt="Car Image">
+            <div class="description">
+                Welcome to EJAR Car Rentals. Discover the ultimate convenience and comfort with EJAR Car Rentals, your premier destination for top-quality vehicles and exceptional service. Whether you're planning a business trip, a family vacation, or simply need a reliable ride, we have the perfect car to meet your needs.
+            </div>
         </div>
-        <span class="v4_15">
-            Welcome to EJAR Car Rentals. Discover the ultimate convenience and comfort with EJAR Car Rentals, your premier destination for top-quality vehicles and exceptional service. Whether you're planning a business trip, a family vacation, or simply need a reliable ride, we have the perfect car to meet your needs.
-        </span>
-        <div class="v4_16">
-            <span class="v4_17">Rent your car</span>
+        <div class="cta-button">
+            <span>Rent your car</span>
         </div>
     </div>
 </body>
