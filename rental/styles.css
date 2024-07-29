@@ -1,5 +1,7 @@
 /* styles.css */
 
+/* التنسيق السابق */
+
 body {
     font-family: Arial, sans-serif;
     direction: rtl;
@@ -33,6 +35,7 @@ nav ul li a {
 main {
     padding: 20px;
     text-align: center;
+    padding-bottom: 80px; /* إضافة مسافة سفلية للمحتوى */
 }
 
 form {
