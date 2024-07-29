@@ -21,27 +21,5 @@ document.addEventListener('DOMContentLoaded', function() {
             <h3>${car.name}</h3>
             <p>طريقة الاستلام: ${pickupMethod === 'branch' ? 'استلام من الفرع' : 'توصيل للمنزل'}</p>
             <p>وقت الاستلام: ${new Date(pickupDate).toLocaleString()}</p>
-            <p>وقتتتت التسليم: ${new Date(returnDate).toLocaleString()}</p>
-            <p>السعر الكلي: ${totalPrice} ريال</p>
-        `;
-    } else {
-        rentalDetails.innerHTML = `<p>لم يتم العثور على السيارة.</p>`;
-    }
-
-    const paymentForm = document.getElementById('paymentForm');
-    
-    paymentForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const creditCard = document.getElementById('creditCard').value;
-        
-        // يمكنك إرسال البيانات إلى السيرفر هنا
-        console.log('Name:', name);
-        console.log('Email:', email);
-        console.log('Credit Card:', creditCard);
-        
-        alert('تم الدفع بنجاح!');
-    });
-});
+            <p>وقت التسليم: ${new Date(returnDate).toLocaleString()}</p>
+            <p>السعر
