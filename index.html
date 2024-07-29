@@ -1,127 +1,146 @@
-<!DOCTYPE html><html><head>
-<style>* {
-  box-sizing: border-box;
-}
-body {
-  font-size: 14px;
-}
-.v2_4334 {
-  width: 100%;
-  height: 1024px;
-  background: rgba(194,185,185,1);
-  opacity: 1;
-  position: relative;
-  top: 0px;
-  left: 0px;
-  overflow: hidden;
-}
-.v3_2 {
-  width: 100%;
-  height: 84px;
-  background: rgba(217,217,217,1);
-  opacity: 1;
-  position: relative;
-  top: 0px;
-  left: 0px;
-  overflow: hidden;
-}
-.v3_3 {
-  width: 67px;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  top: 30px;
-  left: 48px;
-  font-family: Roboto;
-  font-weight: Regular;
-  font-size: 24px;
-  opacity: 1;
-  text-align: left;
-}
-.v3_4 {
-  width: 51px;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  top: 30px;
-  left: 204px;
-  font-family: Roboto;
-  font-weight: Regular;
-  font-size: 24px;
-  opacity: 1;
-  text-align: left;
-}
-.v3_5 {
-  width: 100px;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  top: 30px;
-  left: 344px;
-  font-family: Roboto;
-  font-weight: Regular;
-  font-size: 24px;
-  opacity: 1;
-  text-align: left;
-}
-.v4_6 {
-  width: 120px;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  top: 30px;
-  left: 533px;
-  font-family: Roboto;
-  font-weight: Regular;
-  font-size: 24px;
-  opacity: 1;
-  text-align: left;
-}
-.v4_13 {
-  width: 100%;
-  height: 663px;
-  background: rgba(255,255,255,1);
-  opacity: 1;
-  position: absolute;
-  top: 88px;
-  left: 0px;
-  overflow: hidden;
-}
-.v4_15 {
-  width: 100%;
-  color: rgba(0,0,0,1);
-  position: absolute;
-  top: 279px;
-  left: 81px;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-family: Roboto Serif;
-  font-weight: Light;
-  font-size: 32px;
-  opacity: 1;
-  text-align: left;
-}
-.v4_16 {
-  width: 484px;
-  height: 84px;
-  background: rgba(0,0,0,0.699999988079071);
-  opacity: 1;
-  position: absolute;
-  top: 864px;
-  left: 478px;
-  border: 1px solid rgba(38,32,32,1);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  overflow: hidden;
-}
-.v4_17 {
-  width: 194px;
-  color: rgba(255,254,254,1);
-  position: absolute;
-  top: 894px;
-  left: 623px;
-  font-family: Roboto;
-  font-weight: Regular;
-  font-size: 32px;
-  opacity: 1;
-  text-align: left;
-}
-</style>
-<title>Document</title></head>
-
-<body><div class="v2_4334"><div class="v3_2"></div><span class="v3_3">Home</span><span class="v3_4">Cars</span><span class="v3_5">About us</span><span class="v4_6">Contact us</span><div class="v4_13"> <img src="https://sultan-it-1.github.io/project-405/images/car1.webp" alt="Car Image"></div><span class="v4_15">  </span><div class="v4_16"></div><span class="v4_17">Rent your car</span></div></body></html>
-
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-size: 14px;
+            margin: 0;
+            padding: 0;
+        }
+        .v2_4334 {
+            width: 100%;
+            min-height: 100vh;
+            background: rgba(194,185,185,1);
+            opacity: 1;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .v3_2 {
+            width: 100%;
+            height: 84px;
+            background: rgba(217,217,217,1);
+            opacity: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+        .v3_3, .v3_4, .v3_5, .v4_6 {
+            color: rgba(0,0,0,1);
+            font-family: Roboto, sans-serif;
+            font-weight: Regular;
+            font-size: 24px;
+            opacity: 1;
+            margin: 0 20px;
+        }
+        .nav {
+            display: flex;
+        }
+        .v4_13 {
+            width: 100%;
+            max-width: 1200px;
+            background: rgba(255,255,255,1);
+            opacity: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px 0;
+        }
+        .v4_13 img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+        .v4_15 {
+            width: 100%;
+            max-width: 1000px;
+            color: rgba(0,0,0,1);
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            font-family: Roboto Serif, serif;
+            font-weight: Light;
+            font-size: 32px;
+            opacity: 1;
+            text-align: center;
+            padding: 20px;
+        }
+        .v4_16 {
+            width: 100%;
+            max-width: 484px;
+            background: rgba(0,0,0,0.7);
+            opacity: 1;
+            border: 1px solid rgba(38,32,32,1);
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .v4_17 {
+            color: rgba(255,254,254,1);
+            font-family: Roboto, sans-serif;
+            font-weight: Regular;
+            font-size: 32px;
+            opacity: 1;
+            text-align: center;
+            padding: 20px;
+        }
+        @media (max-width: 768px) {
+            .v3_3, .v3_4, .v3_5, .v4_6 {
+                font-size: 18px;
+                margin: 0 10px;
+            }
+            .v4_15 {
+                font-size: 24px;
+                padding: 10px;
+            }
+            .v4_17 {
+                font-size: 24px;
+            }
+        }
+        @media (max-width: 480px) {
+            .v3_3, .v3_4, .v3_5, .v4_6 {
+                font-size: 16px;
+                margin: 0 5px;
+            }
+            .v4_15 {
+                font-size: 20px;
+                padding: 5px;
+            }
+            .v4_17 {
+                font-size: 20px;
+                padding: 10px;
+            }
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="v2_4334">
+        <div class="v3_2">
+            <div class="nav">
+                <span class="v3_3">Home</span>
+                <span class="v3_4">Cars</span>
+                <span class="v3_5">About us</span>
+                <span class="v4_6">Contact us</span>
+            </div>
+        </div>
+        <div class="v4_13">
+            <img src="https://sultan-it-1.github.io/project-405/images/car1.webp" alt="Car Image">
+        </div>
+        <span class="v4_15">
+            Welcome to EJAR Car Rentals
+            Discover the ultimate convenience and comfort with EJAR Car Rentals, your premier destination for top-quality vehicles and exceptional service. Whether you're planning a business trip, a family vacation, or simply need a reliable ride, we have the perfect car to meet your needs.
+        </span>
+        <div class="v4_16">
+            <span class="v4_17">Rent your car</span>
+        </div>
+    </div>
+</body>
+</html>
