@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
     if (car) {
         rentalDetails.innerHTML = `
             <h3>${car.name}</h3>
-            <p>السعر: ${car.price} ريال/اليوم</p>
             <p>طريقة الاستلام: ${pickupMethod === 'branch' ? 'استلام من الفرع' : 'توصيل للمنزل'}</p>
             <p>وقت الاستلام: ${new Date(pickupDate).toLocaleString()}</p>
             <p>وقت التسليم: ${new Date(returnDate).toLocaleString()}</p>
