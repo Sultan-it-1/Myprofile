@@ -1,11 +1,9 @@
-// payment.js
-
 document.addEventListener('DOMContentLoaded', function() {
-    const urlParams = new URLSearchParams(window.location.search);
-    const carId = urlParams.get('id');
-    const pickupMethod = urlParams.get('pickupMethod');
-    const rentalDate = urlParams.get('rentalDate');
-    const rentalDetails = document.getElementById('rentalDetails');
+    const carList = document.getElementById('carList');
+    const rentalForm = document.getElementById('rentalForm');
+    const pickupMethod = document.getElementById('pickupMethod');
+    const pickupDate = document.getElementById('pickupDate');
+    const returnDate = document.getElementById('returnDate');
 
     const cars = [
         { id: 1, name: 'تويوتا كورولا', price: 100, details: 'سيارة اقتصادية ومريحة.' },
@@ -14,34 +12,48 @@ document.addEventListener('DOMContentLoaded', function() {
         // يمكنك إضافة المزيد من السيارات هنا
     ];
 
-    const car = cars.find(c => c.id == carId);
-
-    if (car) {
-        rentalDetails.innerHTML = `
+    cars.forEach(car => {
+        const carItem = document.createElement('div');
+        carItem.classList.add('car-item');
+        carItem.innerHTML = `
             <h3>${car.name}</h3>
             <p>السعر: ${car.price} ريال/اليوم</p>
             <p>${car.details}</p>
-            <p>طريقة الاستلام: ${pickupMethod === 'branch' ? 'استلام من الفرع' : 'توصيل للمنزل'}</p>
-            <p>وقت الإيجار: ${new Date(rentalDate).toLocaleString()}</p>
+            <button type="button" onclick="rentCar(${car.id}, ${car.price})">استأجر الآن</button>
         `;
-    } else {
-        rentalDetails.innerHTML = `<p>لم يتم العثور على السيارة.</p>`;
-    }
+        carList.appendChild(carItem);
+    });
 
-    const paymentForm = document.getElementById('paymentForm');
-    
-    paymentForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const creditCard = document.getElementById('creditCard').value;
-        
-        // يمكنك إرسال البيانات إلى السيرفر هنا
-        console.log('Name:', name);
-        console.log('Email:', email);
-        console.log('Credit Card:', creditCard);
-        
-        alert('تم الدفع بنجاح!');
+    rentalForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // منع إعادة تحميل الصفحة عند تقديم النموذج
+
+        const selectedCarId = rentalForm.getAttribute('data-selected-car-id');
+        const selectedCarPrice = rentalForm.getAttribute('data-selected-car-price');
+        if (!selectedCarId || !selectedCarPrice) {
+            alert('يرجى اختيار سيارة للاستئجار.');
+            return;
+        }
+
+        const pickupMethodValue = pickupMethod.value;
+        const pickupDateValue = new Date(pickupDate.value);
+        const returnDateValue = new Date(returnDate.value);
+
+        if (!pickupDateValue || !returnDateValue || returnDateValue <= pickupDateValue) {
+            alert('يرجى اختيار وقت الاستلام ووقت تسليم صحيح.');
+            return;
+        }
+
+        const rentalDays = Math.ceil((returnDateValue - pickupDateValue) / (1000 * 60 * 60 * 24));
+        const totalPrice = rentalDays * selectedCarPrice;
+
+        const url = `https://sultan-it-1.github.io/project-405/payment/?id=${selectedCarId}&pickupMethod=${pickupMethodValue}&pickupDate=${encodeURIComponent(pickupDate.value)}&returnDate=${encodeURIComponent(returnDate.value)}&totalPrice=${totalPrice}`;
+        window.location.href = url;
     });
 });
+
+function rentCar(carId, carPrice) {
+    const rentalForm = document.getElementById('rentalForm');
+    rentalForm.setAttribute('data-selected-car-id', carId);
+    rentalForm.setAttribute('data-selected-car-price', carPrice);
+    rentalForm.submit();
+}
