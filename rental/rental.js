@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const returnDate = document.getElementById('returnDate');
 
     const cars = [
-        { id: 1, name: 'تويوتا كورولا', model: 2023, price: 100, details: 'سيارة اقتصادية ومريحة.', image: 'https://sultan-it-1.github.io/project-405/rental/2015.jpg' },
-        { id: 2, name: 'نيسان صني', model: 2022, price: 90, details: 'سيارة اقتصادية وموفرة للوقود.', image: 'https://sultan-it-1.github.io/project-405/rental/2021.jpg' },
-        { id: 3, name: 'هيونداي إلنترا', model: 2023, price: 120, details: 'سيارة عائلية بامتياز.', image: 'https://sultan-it-1.github.io/project-405/rental/2017.jpg' },
+        { id: 1, name: 'تويوتا كورولا', model: 2023, price: 100, details: 'سيارة اقتصادية ومريحة', image: 'https://sultan-it-1.github.io/project-405/rental/2015.jpg' },
+        { id: 2, name: 'نيسان صني', model: 2022, price: 90, details: 'سيارة اقتصادية وموفرة للوقود', image: 'https://sultan-it-1.github.io/project-405/rental/2021.jpg' },
+        { id: 3, name: 'هيونداي إلنترا', model: 2023, price: 120, details: 'سيارة عائلية بامتياز', image: 'https://sultan-it-1.github.io/project-405/rental/2017.jpg' },
         // يمكنك إضافة المزيد من السيارات هنا
     ];
 
