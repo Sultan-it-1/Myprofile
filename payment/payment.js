@@ -15,13 +15,16 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     const car = cars.find(c => c.id == carId);
+    const rentalDays = Math.ceil((new Date(returnDate) - new Date(pickupDate)) / (1000 * 60 * 60 * 24));
 
     if (car) {
         rentalDetails.innerHTML = `
             <h3>${car.name}</h3>
+            <p>السعر: ${car.price} ريال/اليوم</p>
             <p>طريقة الاستلام: ${pickupMethod === 'branch' ? 'استلام من الفرع' : 'توصيل للمنزل'}</p>
             <p>وقت الاستلام: ${new Date(pickupDate).toLocaleString()}</p>
             <p>وقت التسليم: ${new Date(returnDate).toLocaleString()}</p>
+            <p>عدد الأيام: ${rentalDays}</p>
             <p>السعر الكلي: ${totalPrice} ريال</p>
         `;
     } else {
