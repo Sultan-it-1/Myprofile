@@ -32,6 +32,6 @@ function rentCar(carId) {
         return;
     }
 
-    const url = `https://sultan-it-1.github.io/project-405/payment?id=${carId}&pickupMethod=${pickupMethod}&rentalDate=${encodeURIComponent(rentalDate)}`;
+    const url = `https://sultan-it-1.github.io/project-405/payment.html?id=${carId}&pickupMethod=${pickupMethod}&rentalDate=${encodeURIComponent(rentalDate)}`;
     window.location.href = url;
 }
