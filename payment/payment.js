@@ -1,7 +1,10 @@
 // payment.js
 
 document.addEventListener('DOMContentLoaded', function() {
-    const carId = new URLSearchParams(window.location.search).get('id');
+    const urlParams = new URLSearchParams(window.location.search);
+    const carId = urlParams.get('id');
+    const pickupMethod = urlParams.get('pickupMethod');
+    const rentalDate = urlParams.get('rentalDate');
     const rentalDetails = document.getElementById('rentalDetails');
 
     const cars = [
@@ -17,6 +20,9 @@ document.addEventListener('DOMContentLoaded', function() {
         rentalDetails.innerHTML = `
             <h3>${car.name}</h3>
             <p>السعر: ${car.price} ريال/اليوم</p>
+            <p>${car.details}</p>
+            <p>طريقة الاستلام: ${pickupMethod === 'branch' ? 'استلام من الفرع' : 'توصيل للمنزل'}</p>
+            <p>وقت الإيجار: ${new Date(rentalDate).toLocaleString()}</p>
         `;
     } else {
         rentalDetails.innerHTML = `<p>لم يتم العثور على السيارة.</p>`;
