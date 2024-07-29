@@ -34,7 +34,7 @@ function rentCar(carId, carPrice) {
 
     if (!pickupDateValue || !returnDateValue) {
           alert('يرجى اختيار وقت الاستلام ووقت التسليم.');
-        alert('انتبه');
+        
         return;
     }
 
