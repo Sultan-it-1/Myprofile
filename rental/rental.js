@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     const carList = document.getElementById('carList');
-    const rentalForm = document.getElementById('rentalForm');
     const pickupMethod = document.getElementById('pickupMethod');
     const pickupDate = document.getElementById('pickupDate');
     const returnDate = document.getElementById('returnDate');
@@ -19,41 +18,25 @@ document.addEventListener('DOMContentLoaded', function() {
             <h3>${car.name}</h3>
             <p>السعر: ${car.price} ريال/اليوم</p>
             <p>${car.details}</p>
-            <button type="button" onclick="selectCar(${car.id}, ${car.price})">استأجر الآن</button>
+            <button type="button" onclick="rentCar(${car.id}, ${car.price})">استأجر الآن</button>
         `;
         carList.appendChild(carItem);
     });
-
-    rentalForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // منع إعادة تحميل الصفحة عند تقديم النموذج
-
-        const selectedCarId = rentalForm.getAttribute('data-selected-car-id');
-        const selectedCarPrice = rentalForm.getAttribute('data-selected-car-price');
-        if (!selectedCarId || !selectedCarPrice) {
-            alert('يرجى اختيار سيارة للاستئجار.');
-            return;
-        }
-
-        const pickupMethodValue = pickupMethod.value;
-        const pickupDateValue = new Date(pickupDate.value);
-        const returnDateValue = new Date(returnDate.value);
-
-        if (!pickupDateValue || !returnDateValue || returnDateValue <= pickupDateValue) {
-            alert('يرجى اختيار وقت الاستلام ووقت تسليم صحيح.');
-            return;
-        }
-
-        const rentalDays = Math.ceil((returnDateValue - pickupDateValue) / (1000 * 60 * 60 * 24));
-        const totalPrice = rentalDays * selectedCarPrice;
-
-        const url = `https://sultan-it-1.github.io/project-405/payment.html?id=${selectedCarId}&pickupMethod=${pickupMethodValue}&pickupDate=${encodeURIComponent(pickupDate.value)}&returnDate=${encodeURIComponent(returnDate.value)}&totalPrice=${totalPrice}`;
-        window.location.href = url;
-    });
 });
 
-function selectCar(carId, carPrice) {
-    const rentalForm = document.getElementById('rentalForm');
-    rentalForm.setAttribute('data-selected-car-id', carId);
-    rentalForm.setAttribute('data-selected-car-price', carPrice);
-    alert('تم اختيار السيارة بنجاح. يرجى تعبئة وقت الاستلام ووقت التسليم لحساب السعر النهائي.');
+function rentCar(carId, carPrice) {
+    const pickupMethodValue = document.getElementById('pickupMethod').value;
+    const pickupDateValue = new Date(document.getElementById('pickupDate').value);
+    const returnDateValue = new Date(document.getElementById('returnDate').value);
+
+    if (!pickupDateValue || !returnDateValue || returnDateValue <= pickupDateValue) {
+        alert('يرجى اختيار وقت الاستلام ووقت تسليم صحيح.');
+        return;
+    }
+
+    const rentalDays = Math.ceil((returnDateValue - pickupDateValue) / (1000 * 60 * 60 * 24));
+    const totalPrice = rentalDays * carPrice;
+
+    const url = `https://sultan-it-1.github.io/project-405/payment/?id=${carId}&pickupMethod=${pickupMethodValue}&pickupDate=${encodeURIComponent(pickupDateValue)}&returnDate=${encodeURIComponent(returnDateValue)}&totalPrice=${totalPrice}`;
+    window.location.href = url;
 }
