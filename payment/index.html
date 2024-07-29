@@ -1,44 +1,31 @@
+<!-- rental.html -->
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إتمام التأجير والدفع - شركة تأجير السيارات</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Car Rental</title>
 </head>
 <body>
-    <header>
-        <h1>شركة تأجير السيارات</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">الرئيسية</a></li>
-                <li><a href="rental.html">التأجير</a></li>
-                <li><a href="about.html">معلومات عن الشركة</a></li>
-                <li><a href="contact.html">تواصل معنا</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h2>إتمام التأجير والدفع</h2>
-        <div id="rentalDetails">
-            <!-- سيتم عرض تفاصيل التأجير هنا -->
-        </div>
-        <form id="paymentForm">
-            <label for="name">الاسم:</label>
-            <input type="text" id="name" name="name" required>
+    <h1>Car Rental Form</h1>
+    <form id="rentalForm">
+        <label for="pickupTime">Pickup Time:</label>
+        <input type="datetime-local" id="pickupTime" name="pickupTime" required><br>
+        
+        <label for="returnTime">Return Time:</label>
+        <input type="datetime-local" id="returnTime" name="returnTime" required><br>
+        
+        <label for="pickupLocation">Pickup Location:</label>
+        <select id="pickupLocation" name="pickupLocation" required>
+            <option value="branch">Branch</option>
+            <option value="homeDelivery">Home Delivery</option>
+        </select><br>
+        
+        <label for="carDetails">Car Details:</label>
+        <textarea id="carDetails" name="carDetails" required></textarea><br>
+        
+        <button type="submit">Proceed to Payment</button>
+    </form>
 
-            <label for="email">البريد الإلكتروني:</label>
-            <input type="email" id="email" name="email" required>
-
-            <label for="creditCard">رقم بطاقة الائتمان:</label>
-            <input type="text" id="creditCard" name="creditCard" required>
-
-            <button type="submit">ادفع الآن</button>
-        </form>
-    </main>
-    <footer>
-        <p>&copy; 2024 شركة تأجير السيارات. جميع الحقوق محفوظة.</p>
-    </footer>
-    <script src="payment.js"></script>
+    <script src="rental.js"></script>
 </body>
 </html>
