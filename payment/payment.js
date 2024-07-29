@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <h3>${car.name}</h3>
             <p>طريقة الاستلام: ${pickupMethod === 'branch' ? 'استلام من الفرع' : 'توصيل للمنزل'}</p>
             <p>وقت الاستلام: ${new Date(pickupDate).toLocaleString()}</p>
-            <p>وقت التسليم: ${new Date(returnDate).toLocaleString()}</p>
+            <p>وقتتتت التسليم: ${new Date(returnDate).toLocaleString()}</p>
             <p>السعر الكلي: ${totalPrice} ريال</p>
         `;
     } else {
