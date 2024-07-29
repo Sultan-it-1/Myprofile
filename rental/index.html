@@ -1,40 +1,47 @@
-<!-- rental.html -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <title>تأجير السيارات</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>التأجير - شركة تأجير السيارات</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>تأجير السيارات</h1>
-    <form id="rentalForm">
-        <label for="pickupLocation">طريقة الاستلام:</label>
-        <select id="pickupLocation" name="pickupLocation" required>
-            <option value="branch">استلام من الفرع</option>
-            <option value="homeDelivery">توصيل للمنزل</option>
-        </select><br>
-        
-        <label for="pickupTime">وقت الاستلام:</label>
-        <input type="datetime-local" id="pickupTime" name="pickupTime" required><br>
-        
-        <label for="returnTime">وقت التسليم:</label>
-        <input type="datetime-local" id="returnTime" name="returnTime" required><br>
-        
-        <div class="car">
-            <h2>تويوتا كورولا</h2>
-            <p>السعر: 100 ريال/اليوم</p>
-            <p>سيارة اقتصادية ومريحة.</p>
-            <button type="button" onclick="proceedToPayment('Toyota Corolla', 100)">استئجر الآن</button>
-        </div>
-        
-        <div class="car">
-            <h2>نيسان صني</h2>
-            <p>السعر: 90 ريال/اليوم</p>
-            <p>سيارة اقتصادية وموفرة للوقود.</p>
-            <button type="button" onclick="proceedToPayment('Nissan Sunny', 90)">استئجر الآن</button>
-        </div>
-    </form>
+    <header>
+        <h1>شركة تأجير السيارات</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">الرئيسية</a></li>
+                <li><a href="rental.html">التأجير</a></li>
+                <li><a href="about.html">معلومات عن الشركة</a></li>
+                <li><a href="contact.html">تواصل معنا</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h2>تأجير السيارات</h2>
+        <form id="rentalForm">
+            <label for="pickupMethod">طريقة الاستلام:</label>
+            <select id="pickupMethod" name="pickupMethod">
+                <option value="branch">استلام من الفرع</option>
+                <option value="delivery">توصيل للمنزل</option>
+            </select>
 
+            <label for="pickupDate">وقت الاستلام:</label>
+            <input type="datetime-local" id="pickupDate" name="pickupDate" required>
+
+            <label for="returnDate">وقت التسليم:</label>
+            <input type="datetime-local" id="returnDate" name="returnDate" required>
+
+            <div id="carList">
+                <!-- هنا سيتم عرض السيارات -->
+            </div>
+            <button type="submit">احسب السعر</button>
+        </form>
+    </main>
+    <footer>
+        <p>&copy; 2024 شركة تأجير السيارات. جميع الحقوق محفوظة.</p>
+    </footer>
     <script src="rental.js"></script>
 </body>
 </html>
