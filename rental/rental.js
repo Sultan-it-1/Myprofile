@@ -26,17 +26,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function rentCar(carId, carPrice) {
     const pickupMethodValue = document.getElementById('pickupMethod').value;
-    const pickupDateValue = new Date(document.getElementById('pickupDate').value);
-    const returnDateValue = new Date(document.getElementById('returnDate').value);
+    const pickupDateElement = document.getElementById('pickupDate');
+    const returnDateElement = document.getElementById('returnDate');
+    
+    const pickupDateValue = pickupDateElement.value;
+    const returnDateValue = returnDateElement.value;
 
-    if (!pickupDateValue || !returnDateValue || returnDateValue <= pickupDateValue) {
-        alert('يرجى اختيار وقت الاستلام ووقت تسليم صحيح.');
+    if (!pickupDateValue || !returnDateValue) {
+        alert('يرجى اختيار وقت الاستلام ووقت التسليم.');
         return;
     }
 
-    const rentalDays = Math.ceil((returnDateValue - pickupDateValue) / (1000 * 60 * 60 * 24));
+    const pickupDate = new Date(pickupDateValue);
+    const returnDate = new Date(returnDateValue);
+
+    if (returnDate <= pickupDate) {
+        alert('يرجى اختيار وقت تسليم صحيح بحيث يكون بعد وقت الاستلام.');
+        return;
+    }
+
+    const rentalDays = Math.ceil((returnDate - pickupDate) / (1000 * 60 * 60 * 24));
     const totalPrice = rentalDays * carPrice;
 
-    const url = `https://sultan-it-1.github.io/project-405/payment/?id=${carId}&pickupMethod=${pickupMethodValue}&pickupDate=${encodeURIComponent(pickupDateValue.toISOString())}&returnDate=${encodeURIComponent(returnDateValue.toISOString())}&totalPrice=${totalPrice}`;
+    const url = `https://sultan-it-1.github.io/project-405/payment/?id=${carId}&pickupMethod=${pickupMethodValue}&pickupDate=${encodeURIComponent(pickupDate.toISOString())}&returnDate=${encodeURIComponent(returnDate.toISOString())}&totalPrice=${totalPrice}`;
     window.location.href = url;
 }
