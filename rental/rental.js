@@ -37,6 +37,6 @@ function rentCar(carId, carPrice) {
     const rentalDays = Math.ceil((returnDateValue - pickupDateValue) / (1000 * 60 * 60 * 24));
     const totalPrice = rentalDays * carPrice;
 
-    const url = `https://sultan-it-1.github.io/project-405/payment/?id=${carId}&pickupMethod=${pickupMethodValue}&pickupDate=${encodeURIComponent(pickupDateValue)}&returnDate=${encodeURIComponent(returnDateValue)}&totalPrice=${totalPrice}`;
+    const url = `https://sultan-it-1.github.io/project-405/payment/?id=${carId}&pickupMethod=${pickupMethodValue}&pickupDate=${encodeURIComponent(pickupDateValue.toISOString())}&returnDate=${encodeURIComponent(returnDateValue.toISOString())}&totalPrice=${totalPrice}`;
     window.location.href = url;
 }
