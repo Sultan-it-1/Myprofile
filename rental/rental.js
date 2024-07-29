@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const carList = document.getElementById('carList');
+    const rentalForm = document.getElementById('rentalForm');
+    const pickupMethod = document.getElementById('pickupMethod');
+    const rentalDate = document.getElementById('rentalDate');
 
     const cars = [
         { id: 1, name: 'تويوتا كورولا', price: 100, details: 'سيارة اقتصادية ومريحة.' },
@@ -15,28 +18,35 @@ document.addEventListener('DOMContentLoaded', function() {
             <h3>${car.name}</h3>
             <p>السعر: ${car.price} ريال/اليوم</p>
             <p>${car.details}</p>
-            <label for="pickupMethod-${car.id}">طريقة الاستلام:</label>
-            <select id="pickupMethod-${car.id}">
-                <option value="pickup">استلام من الموقع</option>
-                <option value="delivery">توصيل</option>
-            </select>
-            <label for="rentalDate-${car.id}">تاريخ الإيجار:</label>
-            <input type="date" id="rentalDate-${car.id}">
             <button onclick="rentCar(${car.id})">استأجر الآن</button>
         `;
         carList.appendChild(carItem);
     });
+
+    rentalForm.addEventListener('submit', function(event) {
+        event.preventDefault(); // منع إعادة تحميل الصفحة عند تقديم النموذج
+
+        const selectedCarId = rentalForm.getAttribute('data-selected-car-id');
+        if (!selectedCarId) {
+            alert('يرجى اختيار سيارة للاستئجار.');
+            return;
+        }
+
+        const pickupMethodValue = pickupMethod.value;
+        const rentalDateValue = rentalDate.value;
+
+        if (!rentalDateValue) {
+            alert('يرجى اختيار وقت الإيجار.');
+            return;
+        }
+
+        const url = `https://sultan-it-1.github.io/project-405/payment/?id=${selectedCarId}&pickupMethod=${pickupMethodValue}&rentalDate=${encodeURIComponent(rentalDateValue)}`;
+        window.location.href = url;
+    });
 });
 
 function rentCar(carId) {
-    const pickupMethod = document.getElementById(`pickupMethod-${carId}`).value;
-    const rentalDate = document.getElementById(`rentalDate-${carId}`).value;
-
-    if (!rentalDate) {
-        alert('يرجى اختيار وقت الإيجار.');
-        return;
-    }
-
-    const url = `https://sultan-it-1.github.io/project-405/payment/?id=${carId}&pickupMethod=${pickupMethod}&rentalDate=${encodeURIComponent(rentalDate)}`;
-    window.location.href = url;
+    const rentalForm = document.getElementById('rentalForm');
+    rentalForm.setAttribute('data-selected-car-id', carId);
+    rentalForm.submit();
 }
