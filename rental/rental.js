@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <h3>${car.name}</h3>
             <p>السعر: ${car.price} ريال/اليوم</p>
             <p>${car.details}</p>
-            <button onclick="rentCar(${car.id})">استأجر الآن</button>
+          < a herf="https://sultan-it-1.github.io/project-405/payment/"> <button onclick="rentCar(${car.id})">استأجر الآن</button></a>
         `;
         carList.appendChild(carItem);
     });
