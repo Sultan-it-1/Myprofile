@@ -1,31 +1,49 @@
-<!-- rental.html -->
+<!-- payment.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Car Rental</title>
+    <title>الدفع</title>
 </head>
 <body>
-    <h1>Car Rental Form</h1>
-    <form id="rentalForm">
-        <label for="pickupTime">Pickup Time:</label>
-        <input type="datetime-local" id="pickupTime" name="pickupTime" required><br>
+    <h1>تفاصيل الدفع</h1>
+    <p>وقت الاستلام: <span id="pickupTime"></span></p>
+    <p>وقت التسليم: <span id="returnTime"></span></p>
+    <p>طريقة الاستلام: <span id="pickupLocation"></span></p>
+    <p>تفاصيل السيارة: <span id="carModel"></span></p>
+    <p>السعر: <span id="price"></span> ريال/اليوم</p>
+    
+    <form id="paymentForm">
+        <label for="cardNumber">رقم البطاقة:</label>
+        <input type="text" id="cardNumber" name="cardNumber" required><br>
         
-        <label for="returnTime">Return Time:</label>
-        <input type="datetime-local" id="returnTime" name="returnTime" required><br>
+        <label for="expiryDate">تاريخ الانتهاء:</label>
+        <input type="text" id="expiryDate" name="expiryDate" required><br>
         
-        <label for="pickupLocation">Pickup Location:</label>
-        <select id="pickupLocation" name="pickupLocation" required>
-            <option value="branch">Branch</option>
-            <option value="homeDelivery">Home Delivery</option>
-        </select><br>
+        <label for="cvv">CVV:</label>
+        <input type="text" id="cvv" name="cvv" required><br>
         
-        <label for="carDetails">Car Details:</label>
-        <textarea id="carDetails" name="carDetails" required></textarea><br>
-        
-        <button type="submit">Proceed to Payment</button>
+        <button type="submit">ادفع الآن</button>
     </form>
 
-    <script src="rental.js"></script>
+    <script>
+        document.getElementById('pickupTime').textContent = getQueryVariable('pickupTime');
+        document.getElementById('returnTime').textContent = getQueryVariable('returnTime');
+        document.getElementById('pickupLocation').textContent = getQueryVariable('pickupLocation');
+        document.getElementById('carModel').textContent = getQueryVariable('carModel');
+        document.getElementById('price').textContent = getQueryVariable('price');
+
+        function getQueryVariable(variable) {
+            const query = window.location.search.substring(1);
+            const vars = query.split('&');
+            for (let i = 0; i < vars.length; i++) {
+                const pair = vars[i].split('=');
+                if (pair[0] === variable) {
+                    return decodeURIComponent(pair[1]);
+                }
+            }
+            return null;
+        }
+    </script>
 </body>
 </html>
