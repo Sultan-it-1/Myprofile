@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إتمام التأجير والدفع - شركة تأجير السيارات</title>
+    <title>التأجير - شركة تأجير السيارات</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -19,26 +19,26 @@
         </nav>
     </header>
     <main>
-        <h2>إتمام التأجير والدفع</h2>
-        <div id="rentalDetails">
-            <!-- سيتم عرض تفاصيل التأجير هنا -->
-        </div>
-        <form id="paymentForm">
-            <label for="name">الاسم:</label>
-            <input type="text" id="name" name="name" required>
+        <h2>تأجير السيارات</h2>
+        <form id="rentalForm">
+            <label for="pickupMethod">طريقة الاستلام:</label>
+            <select id="pickupMethod" name="pickupMethod">
+                <option value="branch">استلام من الفرع</option>
+                <option value="delivery">توصيل للمنزل</option>
+            </select>
 
-            <label for="email">البريد الإلكتروني:</label>
-            <input type="email" id="email" name="email" required>
+            <label for="pickupDate">وقت الاستلام:</label>
+            <input type="datetime-local" id="pickupDate" name="pickupDate" required>
 
-            <label for="creditCard">رقم بطاقة الائتمان:</label>
-            <input type="text" id="creditCard" name="creditCard" required>
+            <label for="returnDate">وقت التسليم:</label>
+            <input type="datetime-local" id="returnDate" name="returnDate" required>
 
-            <button type="submit">ادفع الآن</button>
+            <div id="carList">
+                <!-- هنا سيتم عرض السيارات -->
+            </div>
         </form>
     </main>
-    <footer>
-        <p>&copy; 2024 شركة تأجير السيارات. جميع الحقوق محفوظة.</p>
-    </footer>
-    <script src="payment.js"></script>
+  
+    <script src="rental.js"></script>
 </body>
 </html>
