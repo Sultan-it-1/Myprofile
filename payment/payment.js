@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const carList = document.getElementById('carList');
-    const rentalForm = document.getElementById('rentalForm');
-    const pickupMethod = document.getElementById('pickupMethod');
-    const pickupDate = document.getElementById('pickupDate');
-    const returnDate = document.getElementById('returnDate');
+    const urlParams = new URLSearchParams(window.location.search);
+    const carId = urlParams.get('id');
+    const pickupMethod = urlParams.get('pickupMethod');
+    const pickupDate = urlParams.get('pickupDate');
+    const returnDate = urlParams.get('returnDate');
+    const totalPrice = urlParams.get('totalPrice');
+    const rentalDetails = document.getElementById('rentalDetails');
 
     const cars = [
         { id: 1, name: 'تويوتا كورولا', price: 100, details: 'سيارة اقتصادية ومريحة.' },
@@ -12,48 +14,34 @@ document.addEventListener('DOMContentLoaded', function() {
         // يمكنك إضافة المزيد من السيارات هنا
     ];
 
-    cars.forEach(car => {
-        const carItem = document.createElement('div');
-        carItem.classList.add('car-item');
-        carItem.innerHTML = `
+    const car = cars.find(c => c.id == carId);
+
+    if (car) {
+        rentalDetails.innerHTML = `
             <h3>${car.name}</h3>
-            <p>السعر: ${car.price} ريال/اليوم</p>
-            <p>${car.details}</p>
-            <button type="button" onclick="rentCar(${car.id}, ${car.price})">استأجر الآن</button>
+            <p>طريقة الاستلام: ${pickupMethod === 'branch' ? 'استلام من الفرع' : 'توصيل للمنزل'}</p>
+            <p>وقت الاستلام: ${new Date(pickupDate).toLocaleString()}</p>
+            <p>وقت التسليم: ${new Date(returnDate).toLocaleString()}</p>
+            <p>السعر الكلي: ${totalPrice} ريال</p>
         `;
-        carList.appendChild(carItem);
-    });
+    } else {
+        rentalDetails.innerHTML = `<p>لم يتم العثور على السيارة.</p>`;
+    }
 
-    rentalForm.addEventListener('submit', function(event) {
-        event.preventDefault(); // منع إعادة تحميل الصفحة عند تقديم النموذج
-
-        const selectedCarId = rentalForm.getAttribute('data-selected-car-id');
-        const selectedCarPrice = rentalForm.getAttribute('data-selected-car-price');
-        if (!selectedCarId || !selectedCarPrice) {
-            alert('يرجى اختيار سيارة للاستئجار.');
-            return;
-        }
-
-        const pickupMethodValue = pickupMethod.value;
-        const pickupDateValue = new Date(pickupDate.value);
-        const returnDateValue = new Date(returnDate.value);
-
-        if (!pickupDateValue || !returnDateValue || returnDateValue <= pickupDateValue) {
-            alert('يرجى اختيار وقت الاستلام ووقت تسليم صحيح.');
-            return;
-        }
-
-        const rentalDays = Math.ceil((returnDateValue - pickupDateValue) / (1000 * 60 * 60 * 24));
-        const totalPrice = rentalDays * selectedCarPrice;
-
-        const url = `https://sultan-it-1.github.io/project-405/payment.html?id=${selectedCarId}&pickupMethod=${pickupMethodValue}&pickupDate=${encodeURIComponent(pickupDate.value)}&returnDate=${encodeURIComponent(returnDate.value)}&totalPrice=${totalPrice}`;
-        window.location.href = url;
+    const paymentForm = document.getElementById('paymentForm');
+    
+    paymentForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const creditCard = document.getElementById('creditCard').value;
+        
+        // يمكنك إرسال البيانات إلى السيرفر هنا
+        console.log('Name:', name);
+        console.log('Email:', email);
+        console.log('Credit Card:', creditCard);
+        
+        alert('تم الدفع بنجاح!');
     });
 });
-
-function rentCar(carId, carPrice) {
-    const rentalForm = document.getElementById('rentalForm');
-    rentalForm.setAttribute('data-selected-car-id', carId);
-    rentalForm.setAttribute('data-selected-car-price', carPrice);
-    alert('تم اختيار السيارة بنجاح. يرجى تعبئة وقت الاستلام ووقت التسليم لحساب السعر النهائي.');
-}
