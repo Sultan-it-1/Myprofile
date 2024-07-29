@@ -15,17 +15,22 @@ document.addEventListener('DOMContentLoaded', function() {
             <h3>${car.name}</h3>
             <p>السعر: ${car.price} ريال/اليوم</p>
             <p>${car.details}</p>
-          <a href="https://sultan-it-1.github.io/project-405/payment/">
+            <label for="pickupMethod-${car.id}">طريقة الاستلام:</label>
+            <select id="pickupMethod-${car.id}">
+                <option value="pickup">استلام من الموقع</option>
+                <option value="delivery">توصيل</option>
+            </select>
+            <label for="rentalDate-${car.id}">تاريخ الإيجار:</label>
+            <input type="date" id="rentalDate-${car.id}">
             <button onclick="rentCar(${car.id})">استأجر الآن</button>
-        </a>
         `;
         carList.appendChild(carItem);
     });
 });
 
 function rentCar(carId) {
-    const pickupMethod = document.getElementById('pickupMethod').value;
-    const rentalDate = document.getElementById('rentalDate').value;
+    const pickupMethod = document.getElementById(`pickupMethod-${carId}`).value;
+    const rentalDate = document.getElementById(`rentalDate-${carId}`).value;
 
     if (!rentalDate) {
         alert('يرجى اختيار وقت الإيجار.');
