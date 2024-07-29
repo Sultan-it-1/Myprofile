@@ -5,9 +5,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const returnDate = document.getElementById('returnDate');
 
     const cars = [
-        { id: 1, name: 'تويوتا كورولا', price: 100, details: 'سيارة اقتصادية ومريحة.' },
-        { id: 2, name: 'نيسان صني', price: 90, details: 'سيارة اقتصادية وموفرة للوقود.' },
-        { id: 3, name: 'هيونداي إلنترا', price: 120, details: 'سيارة عائلية بامتياز.' },
+        { id: 1, name: 'تويوتا كورولا', price: 100, details: 'سيارة اقتصادية ومريحة.', image: 'https://example.com/toyota-corolla.jpg' },
+        { id: 2, name: 'نيسان صني', price: 90, details: 'سيارة اقتصادية وموفرة للوقود.', image: 'https://example.com/nissan-sunny.jpg' },
+        { id: 3, name: 'هيونداي إلنترا', price: 120, details: 'سيارة عائلية بامتياز.', image: 'https://example.com/hyundai-elantra.jpg' },
         // يمكنك إضافة المزيد من السيارات هنا
     ];
 
@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const carItem = document.createElement('div');
         carItem.classList.add('car-item');
         carItem.innerHTML = `
+            <img src="${car.image}" alt="${car.name}" class="car-image">
             <h3>${car.name}</h3>
             <p>السعر: ${car.price} ريال/اليوم</p>
             <p>${car.details}</p>
@@ -33,8 +34,7 @@ function rentCar(carId, carPrice) {
     const returnDateValue = returnDateElement.value;
 
     if (!pickupDateValue || !returnDateValue) {
-          alert('يرجى اختيار وقت الاستلام ووقت التسليم.');
-        
+        alert('يرجى اختيار وقت الاستلام ووقت التسليم.');
         return;
     }
 
@@ -43,7 +43,6 @@ function rentCar(carId, carPrice) {
 
     if (returnDate <= pickupDate) {
         alert('يرجى اختيار وقت تسليم صحيح بحيث يكون بعد وقت الاستلام.');
-        alert();
         return;
     }
 
