@@ -17,6 +17,7 @@ nav ul {
     padding: 0;
     margin: 0;
     text-align: center;
+    direction: rtl; /* إضافة هذه الخاصية لضمان الترتيب الصحيح من اليمين إلى اليسار */
 }
 
 nav ul li {
