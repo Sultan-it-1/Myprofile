@@ -60,6 +60,7 @@ input, textarea {
 textarea {
     resize: vertical;
     min-height: 150px; /* تعديل الحد الأدنى للارتفاع */
+    min-width: 400px;
 }
 
 button {
