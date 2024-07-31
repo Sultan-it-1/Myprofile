@@ -3,6 +3,8 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    direction: rtl; /* اتجاه النص من اليمين إلى اليسار */
+    text-align: right; /* محاذاة النص إلى اليمين */
 }
 
 header {
@@ -17,7 +19,6 @@ nav ul {
     padding: 0;
     margin: 0;
     text-align: center;
-    direction: rtl;
 }
 
 nav ul li {
@@ -42,6 +43,7 @@ main {
 form {
     display: flex;
     flex-direction: column;
+    text-align: right;
 }
 
 label {
@@ -55,12 +57,12 @@ input, textarea {
     border-radius: 4px;
     width: 100%;
     box-sizing: border-box;
+    text-align: right; /* محاذاة النص داخل الحقول إلى اليمين */
 }
 
 textarea {
     resize: vertical;
     min-height: 150px; /* تعديل الحد الأدنى للارتفاع */
-    min-width: 400px;
 }
 
 button {
