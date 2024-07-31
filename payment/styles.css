@@ -48,6 +48,16 @@ form {
     margin: 10px;
 }
 
+#creditCard {
+  
+     text-align: right; 
+}
+
+#email {
+  
+     text-align: right; 
+}
+
 form label {
     display: block;
     margin: 10px 0 5px;
