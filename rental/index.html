@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>التأجير - شركة تأجير السيارات</title>
+    <title>تأجير السيارات - شركة تأجير السيارات</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,38 +12,41 @@
         <nav>
             <ul>
                 <li><a href="https://sultan-it-1.github.io/project-405/">الرئيسية</a></li>
-               <li><a href="https://sultan-it-1.github.io/project-405/rental">التأجير</a></li>
+                <li><a href="https://sultan-it-1.github.io/project-405/rental">التأجير</a></li>
                 <li><a href="https://sultan-it-1.github.io/project-405/about">معلومات عن الشركة</a></li>
                 <li><a href="https://sultan-it-1.github.io/project-405/contact">تواصل معنا</a></li>
-                
             </ul>
         </nav>
     </header>
     <main>
         <h2>تأجير السيارات</h2>
-        <label for="pickupMethod">طريقة الاستلام:</label>
-        <select id="pickupMethod" name="pickupMethod">
-            <option value="branch">استلام من الفرع</option>
-            <option value="delivery">توصيل للمنزل</option>
-        </select>
-
-        <label for="pickupDate">وقت الاستلام:</label>
-        <input type="datetime-local" id="pickupDate" name="pickupDate" required>
-
-        <label for="returnDate">وقت التسليم:</label>
-        <input type="datetime-local" id="returnDate" name="returnDate" required>
-
-        <!-- خانة البحث -->
-        <label for="search">ابحث عن سيارة:</label>
-        <input type="text" id="search" placeholder="ابحث باسم السيارة أو الموديل">
+        <form id="rentalForm">
+            <div class="form-group">
+                <label for="pickupMethod">طريقة الاستلام:</label>
+                <select id="pickupMethod" name="pickupMethod">
+                    <option value="branch">استلام من الفرع</option>
+                    <option value="delivery">توصيل للمنزل</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="pickupDate">وقت الاستلام:</label>
+                <input type="datetime-local" id="pickupDate" name="pickupDate" required>
+            </div>
+            <div class="form-group">
+                <label for="returnDate">وقت التسليم:</label>
+                <input type="datetime-local" id="returnDate" name="returnDate" required>
+            </div>
+            <div class="form-group">
+                <label for="search">ابحث عن سيارة:</label>
+                <input type="text" id="search" placeholder="ابحث باسم السيارة أو الموديل">
+            </div>
+        </form>
 
         <div id="carList">
             <!-- هنا سيتم عرض السيارات -->
         </div>
     </main>
-    <footer>
-        <p>&copy; 2024 شركة تأجير السيارات. جميع الحقوق محفوظة.</p>
-    </footer>
+    
     <script src="rental.js"></script>
 </body>
 </html>
