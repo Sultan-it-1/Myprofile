@@ -6,7 +6,11 @@
     <title>تواصل معنا - شركة تأجير السيارات</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script src="contact.js" defer></script>
+    <script>
+        (function() {
+            emailjs.init("8M2Q0XU-H2L2q14TE");
+        })();
+    </script>
 </head>
 <body>
     <header>
@@ -41,5 +45,17 @@
     <footer>
         <p>&copy; 2024 شركة تأجير السيارات. جميع الحقوق محفوظة.</p>
     </footer>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            emailjs.sendForm('service_kbcg0i1', 'template_9oqn5qk', this)
+                .then(function() {
+                    alert('تم إرسال الرسالة بنجاح!');
+                }, function(error) {
+                    alert('حدث خطأ أثناء إرسال الرسالة: ' + JSON.stringify(error));
+                });
+        });
+    </script>
 </body>
 </html>
