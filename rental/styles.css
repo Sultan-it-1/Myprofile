@@ -3,6 +3,8 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    direction: rtl;
+    text-align: right; 
 }
 
 header {
@@ -17,7 +19,6 @@ nav ul {
     padding: 0;
     margin: 0;
     text-align: center;
-    direction: rtl;
 }
 
 nav ul li {
@@ -32,98 +33,60 @@ nav ul li a {
 
 main {
     padding: 20px;
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
-}
-
-.car-item {
     background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
-    margin: 20px 0;
+    border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* لضمان توزيع العناصر بشكل مناسب */
-    gap: 20px;
-    flex-wrap: wrap; /* لجعل العناصر تلتف عند الشاشات الصغيرة */
 }
 
-.car-item img.car-image {
-    width: 100%;
-    max-width: 150px;
-    border-radius: 5px;
-}
-
-.car-details {
-    flex: 1;
-    min-width: 200px; /* حد أدنى للعرض */
+form {
     display: flex;
     flex-direction: column;
+    align-items: flex-end; 
 }
 
-.car-details h3 {
-    margin: 0;
-    font-size: 1.5em;
-    margin-bottom: 10px;
+label {
+    margin-top: 10px;
 }
 
-.car-details p {
-    margin: 5px 0;
+input, select {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%;
+    max-width: 300px; 
+    box-sizing: border-box;
+    text-align: right; 
 }
 
-.car-actions {
-    display: flex;
-    justify-content: flex-end; /* لضمان أن الزر يكون في أقصى اليمين */
-    margin-top: auto; /* لضمان أن الزر يكون في الأسفل */
+textarea {
+    resize: vertical;
+    min-height: 150px; 
 }
 
-.car-actions button {
+button {
     padding: 10px 20px;
-    background-color: #28a745;
+    background-color: #007bff;
     color: #fff;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    align-self: flex-start;
 }
 
-.car-actions button:hover {
-    background-color: #218838;
+button:hover {
+    background-color: #0056b3;
 }
 
-label, select, input[type="datetime-local"] {
-    display: block;
-    margin: 10px 0;
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #333;
+    color: #fff;
+    position: fixed;
     width: 100%;
-    max-width: 300px; /* تقليل العرض الأقصى للحقول */
-    box-sizing: border-box; /* لتجنب تجاوز العرض */
+    bottom: 0;
 }
-
-/* وسائط الاستعلام لجعل التصميم متجاوبًا */
-@media (max-width: 768px) {
-    .car-item {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    
-    nav ul li {
-        display: block;
-        margin: 5px 0;
-    }
-    
-    main {
-        padding: 10px;
-    }
-    
-    .car-details h3 {
-        font-size: 1.2em;
-    }
-    
-    .car-actions button {
-        padding: 8px 16px;
-        font-size: 1em;
-    }
-}
-
