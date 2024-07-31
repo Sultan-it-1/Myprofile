@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>تواصل معنا - شركة تأجير السيارات</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY");
+        })();
+    </script>
 </head>
 <body>
     <header>
@@ -20,21 +26,37 @@
     </header>
     <main>
         <h2>تواصل معنا</h2>
-        <form action="send_contact.php" method="POST">
-            <label for="name">الاسم:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">البريد الإلكتروني:</label>
-            <input type="email" id="email" name="email" required>
-            
-            <label for="message">رسالتك:</label>
-            <textarea id="message" name="message" rows="10" required></textarea>
-            
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="name">الاسم:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">البريد الإلكتروني:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">رسالتك:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
             <button type="submit">إرسال</button>
         </form>
     </main>
     <footer>
         <p>&copy; 2024 شركة تأجير السيارات. جميع الحقوق محفوظة.</p>
     </footer>
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            emailjs.sendForm('service_kbcg0i1', 'template_dn2vwll','#message')
+            
+                .then(function() {
+                    alert('تم إرسال الرسالة بنجاح!');
+                }, function(error) {
+                    alert('حدث خطأ أثناء إرسال الرسالة: ' + JSON.stringify(error));
+                });
+        });
+    </script>
 </body>
 </html>
