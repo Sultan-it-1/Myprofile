@@ -41,6 +41,13 @@ form {
     text-align: left;
 }
 
+.form-group {
+    display: flex;
+    flex-direction: column;
+     text-align: right; 
+    margin: 10px;
+}
+
 form label {
     display: block;
     margin: 10px 0 5px;
