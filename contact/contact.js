@@ -1,21 +1,12 @@
 // contact.js
 
-document.addEventListener('DOMContentLoaded', function() {
-    const contactForm = document.getElementById('contactForm');
-    
-    contactForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-        
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const message = document.getElementById('message').value;
-        
-        // يمكنك إرسال البيانات إلى السيرفر هنا
-        console.log('Name:', name);
-        console.log('Email:', email);
-        console.log('Message:', message);
-        
-        alert('تم إرسال رسالتك بنجاح!');
-    });
-});
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
 
+            emailjs.sendForm('service_kbcg0i1', '8M2Q0XU-H2L2q14TE', this)
+                .then(function() {
+                    alert('تم إرسال الرسالة بنجاح!');
+                }, function(error) {
+                    alert('حدث خطأ أثناء إرسال الرسالة: ' + JSON.stringify(error));
+                });
+        });
