@@ -3,14 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تواصل معنا - شركة تأجير السيارات</title>
+    <title>إتمام التأجير والدفع - شركة تأجير السيارات</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-    <script>
-        (function() {
-            emailjs.init("8M2Q0XU-H2L2q14TE");
-        })();
-    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <header>
@@ -25,8 +20,11 @@
         </nav>
     </header>
     <main>
-        <h2>تواصل معنا</h2>
-        <form id="contactForm">
+        <h2>إتمام التأجير والدفع</h2>
+        <div id="rentalDetails">
+            <!-- سيتم عرض تفاصيل التأجير هنا -->
+        </div>
+        <form id="paymentForm">
             <div class="form-group">
                 <label for="name">الاسم:</label>
                 <input type="text" id="name" name="name" required>
@@ -35,26 +33,79 @@
                 <label for="email">البريد الإلكتروني:</label>
                 <input type="email" id="email" name="email" required>
             </div>
-            <div class="form-group">
-                <label for="message">رسالتك:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-            <button type="submit">إرسال</button>
+            <button type="submit">ادفع الآن</button>
         </form>
     </main>
-    <footer>
-        <p>&copy; 2024 شركة تأجير السيارات. جميع الحقوق محفوظة.</p>
-    </footer>
+    
     <script>
-        document.getElementById('contactForm').addEventListener('submit', function(event) {
+        let car, rentalDays, pickupMethod, pickupDate, returnDate, totalPrice;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const carId = urlParams.get('id');
+            pickupMethod = urlParams.get('pickupMethod');
+            pickupDate = urlParams.get('pickupDate');
+            returnDate = urlParams.get('returnDate');
+            totalPrice = urlParams.get('totalPrice');
+            const rentalDetails = document.getElementById('rentalDetails');
+
+            const cars = [
+                { id: 1, name: 'تويوتا كورولا', price: 100, details: 'سيارة اقتصادية ومريحة.' },
+                { id: 2, name: 'نيسان صني', price: 90, details: 'سيارة اقتصادية وموفرة للوقود.' },
+                { id: 3, name: 'هيونداي إلنترا', price: 120, details: 'سيارة عائلية بامتياز.' },
+                // يمكنك إضافة المزيد من السيارات هنا
+            ];
+
+            car = cars.find(c => c.id == carId);
+            rentalDays = Math.ceil((new Date(returnDate) - new Date(pickupDate)) / (1000 * 60 * 60 * 24));
+
+            if (car) {
+                rentalDetails.innerHTML = `
+                    <h3>${car.name}</h3>
+                    <p>السعر: ${car.price} ريال/اليوم</p>
+                    <p>طريقة الاستلام: ${pickupMethod === 'branch' ? 'استلام من الفرع' : 'توصيل للمنزل'}</p>
+                    <p>وقت الاستلام: ${new Date(pickupDate).toLocaleString()}</p>
+                    <p>وقت التسليم: ${new Date(returnDate).toLocaleString()}</p>
+                    <p>عدد الأيام: ${rentalDays}</p>
+                    <p>السعر الكلي: ${totalPrice} ريال</p>
+                `;
+            } else {
+                rentalDetails.innerHTML = `<p>لم يتم العثور على السيارة.</p>`;
+            }
+        });
+
+        $('#paymentForm').submit(function(event) {
             event.preventDefault();
 
-            emailjs.sendForm('service_kbcg0i1', 'template_9oqn5qk', this)
-                .then(function() {
-                    alert('تم إرسال الرسالة بنجاح!');
-                }, function(error) {
-                    alert('حدث خطأ أثناء إرسال الرسالة: ' + JSON.stringify(error));
-                });
+            const name = $('#name').val();
+            const email = $('#email').val();
+
+            const data = {
+                service_id: 'service_kbcg0i1',
+                template_id: 'template_5g89ng8',
+                user_id: '8M2Q0XU-H2L2q14TE',
+                template_params: {
+                    'name': name,
+                    'email': email,
+                    'car_name': car.name,
+                    'car_price': car.price,
+                    'pickup_method': pickupMethod === 'branch' ? 'استلام من الفرع' : 'توصيل للمنزل',
+                    'pickup_date': new Date(pickupDate).toLocaleString(),
+                    'return_date': new Date(returnDate).toLocaleString(),
+                    'rental_days': rentalDays,
+                    'total_price': totalPrice
+                }
+            };
+
+            $.ajax('https://api.emailjs.com/api/v1.0/email/send', {
+                type: 'POST',
+                data: JSON.stringify(data),
+                contentType: 'application/json'
+            }).done(function() {
+                alert('تم إرسال الرسالة بنجاح!');
+            }).fail(function(error) {
+                alert('حدث خطأ أثناء إرسال الرسالة: ' + JSON.stringify(error));
+            });
         });
     </script>
 </body>
