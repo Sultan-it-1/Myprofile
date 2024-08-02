@@ -67,8 +67,8 @@
                     <p>الموديل: ${car.model}</p>
                     <p>السعر: ${car.price} ريال/اليوم</p>
                     <p>طريقة الاستلام: ${pickupMethod === 'branch' ? 'استلام من الفرع' : 'توصيل للمنزل'}</p>
-                    <p>وقت الاستلام: ${moment(pickupDate).format('LLLL')}</p>
-                    <p>وقت التسليم: ${moment(returnDate).format('LLLL')}</p>
+                    <p>وقت الاستلام: ${moment(pickupDate).format('YYYY/MM/DD HH:mm')}</p>
+                    <p>وقت التسليم: ${moment(returnDate).format('YYYY/MM/DD HH:mm')}</p>
                     <p>عدد الأيام: ${rentalDays}</p>
                     <p>السعر الكلي: ${totalPrice} ريال</p>
                 `;
@@ -88,7 +88,7 @@
 
             const data = {
                 service_id: 'service_kbcg0i1',
-                template_id: 'template_67wq2o8',
+                template_id: 'template_e27jgkd',
                 user_id: '8M2Q0XU-H2L2q14TE',
                 template_params: {
                     'name': name,
@@ -97,10 +97,10 @@
                     'car_model': car.model,
                     'car_price': car.price,
                     'pickup_method': pickupMethod === 'branch' ? 'استلام من الفرع' : 'توصيل للمنزل',
-                    'pickup_date': pickupDateTime.format('L'),
-                    'pickup_time': pickupDateTime.format('LT'),
-                    'return_date': returnDateTime.format('L'),
-                    'return_time': returnDateTime.format('LT'),
+                    'pickup_date': pickupDateTime.format('YYYY/MM/DD'),
+                    'pickup_time': pickupDateTime.format('HH:mm'),
+                    'return_date': returnDateTime.format('YYYY/MM/DD'),
+                    'return_time': returnDateTime.format('HH:mm'),
                     'rental_days': rentalDays,
                     'total_price': totalPrice
                 }
