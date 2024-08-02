@@ -50,9 +50,9 @@
             const rentalDetails = document.getElementById('rentalDetails');
 
             const cars = [
-                { id: 1, name: 'تويوتا كورولا', price: 100, details: 'سيارة اقتصادية ومريحة.' },
-                { id: 2, name: 'نيسان صني', price: 90, details: 'سيارة اقتصادية وموفرة للوقود.' },
-                { id: 3, name: 'هيونداي إلنترا', price: 120, details: 'سيارة عائلية بامتياز.' },
+                { id: 1, name: 'تويوتا كورولا', price: 100, model: '2020', details: 'سيارة اقتصادية ومريحة.' },
+                { id: 2, name: 'نيسان صني', price: 90, model: '2019', details: 'سيارة اقتصادية وموفرة للوقود.' },
+                { id: 3, name: 'هيونداي إلنترا', price: 120, model: '2021', details: 'سيارة عائلية بامتياز.' },
                 // يمكنك إضافة المزيد من السيارات هنا
             ];
 
@@ -62,6 +62,7 @@
             if (car) {
                 rentalDetails.innerHTML = `
                     <h3>${car.name}</h3>
+                    <p>الموديل: ${car.model}</p>
                     <p>السعر: ${car.price} ريال/اليوم</p>
                     <p>طريقة الاستلام: ${pickupMethod === 'branch' ? 'استلام من الفرع' : 'توصيل للمنزل'}</p>
                     <p>وقت الاستلام: ${new Date(pickupDate).toLocaleString()}</p>
@@ -80,6 +81,9 @@
             const name = $('#name').val();
             const email = $('#email').val();
 
+            const pickupDateTime = new Date(pickupDate);
+            const returnDateTime = new Date(returnDate);
+
             const data = {
                 service_id: 'service_kbcg0i1',
                 template_id: 'template_e27jgkd',
@@ -88,10 +92,13 @@
                     'name': name,
                     'email': email,
                     'car_name': car.name,
+                    'car_model': car.model,
                     'car_price': car.price,
                     'pickup_method': pickupMethod === 'branch' ? 'استلام من الفرع' : 'توصيل للمنزل',
-                    'pickup_date': new Date(pickupDate).toLocaleString(),
-                    'return_date': new Date(returnDate).toLocaleString(),
+                    'pickup_date': pickupDateTime.toLocaleDateString(),
+                    'pickup_time': pickupDateTime.toLocaleTimeString(),
+                    'return_date': returnDateTime.toLocaleDateString(),
+                    'return_time': returnDateTime.toLocaleTimeString(),
                     'rental_days': rentalDays,
                     'total_price': totalPrice
                 }
@@ -102,7 +109,7 @@
                 data: JSON.stringify(data),
                 contentType: 'application/json'
             }).done(function() {
-                alert(' تم إرسال الرسالة بنجاح الرجاء اكمال عملية الدفع عبر الايميل ! ');
+                alert('تم إرسال الرسالة بنجاح، الرجاء إكمال عملية الدفع عبر البريد الإلكتروني!');
             }).fail(function(error) {
                 alert('حدث خطأ أثناء إرسال الرسالة: ' + JSON.stringify(error));
             });
