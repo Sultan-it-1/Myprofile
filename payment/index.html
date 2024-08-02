@@ -6,6 +6,8 @@
     <title>إتمام التأجير والدفع - شركة تأجير السيارات</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.34/moment-timezone-with-data.min.js"></script>
 </head>
 <body>
     <header>
@@ -65,8 +67,8 @@
                     <p>الموديل: ${car.model}</p>
                     <p>السعر: ${car.price} ريال/اليوم</p>
                     <p>طريقة الاستلام: ${pickupMethod === 'branch' ? 'استلام من الفرع' : 'توصيل للمنزل'}</p>
-                    <p>وقت الاستلام: ${new Date(pickupDate).toLocaleString()}</p>
-                    <p>وقت التسليم: ${new Date(returnDate).toLocaleString()}</p>
+                    <p>وقت الاستلام: ${moment(pickupDate).format('LLLL')}</p>
+                    <p>وقت التسليم: ${moment(returnDate).format('LLLL')}</p>
                     <p>عدد الأيام: ${rentalDays}</p>
                     <p>السعر الكلي: ${totalPrice} ريال</p>
                 `;
@@ -81,8 +83,8 @@
             const name = $('#name').val();
             const email = $('#email').val();
 
-            const pickupDateTime = new Date(pickupDate);
-            const returnDateTime = new Date(returnDate);
+            const pickupDateTime = moment(pickupDate);
+            const returnDateTime = moment(returnDate);
 
             const data = {
                 service_id: 'service_kbcg0i1',
@@ -95,10 +97,10 @@
                     'car_model': car.model,
                     'car_price': car.price,
                     'pickup_method': pickupMethod === 'branch' ? 'استلام من الفرع' : 'توصيل للمنزل',
-                    'pickup_date': pickupDateTime.toLocaleDateString(),
-                    'pickup_time': pickupDateTime.toLocaleTimeString(),
-                    'return_date': returnDateTime.toLocaleDateString(),
-                    'return_time': returnDateTime.toLocaleTimeString(),
+                    'pickup_date': pickupDateTime.format('L'),
+                    'pickup_time': pickupDateTime.format('LT'),
+                    'return_date': returnDateTime.format('L'),
+                    'return_time': returnDateTime.format('LT'),
                     'rental_days': rentalDays,
                     'total_price': totalPrice
                 }
