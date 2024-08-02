@@ -67,8 +67,8 @@
                     <p>الموديل: ${car.model}</p>
                     <p>السعر: ${car.price} ريال/اليوم</p>
                     <p>طريقة الاستلام: ${pickupMethod === 'branch' ? 'استلام من الفرع' : 'توصيل للمنزل'}</p>
-                    <p>وقت الاستلام: ${moment(pickupDate).format('YYYY/MM/DD HH:mm')}</p>
-                    <p>وقت التسليم: ${moment(returnDate).format('YYYY/MM/DD HH:mm')}</p>
+                    <p>وقت الاستلام: ${moment(pickupDate).format('YYYY/MM/DD hh:mm A')}</p>
+                    <p>وقت التسليم: ${moment(returnDate).format('YYYY/MM/DD hh:mm A')}</p>
                     <p>عدد الأيام: ${rentalDays}</p>
                     <p>السعر الكلي: ${totalPrice} ريال</p>
                 `;
@@ -98,9 +98,9 @@
                     'car_price': car.price,
                     'pickup_method': pickupMethod === 'branch' ? 'استلام من الفرع' : 'توصيل للمنزل',
                     'pickup_date': pickupDateTime.format('YYYY/MM/DD'),
-                    'pickup_time': pickupDateTime.format('HH:mm'),
+                    'pickup_time': pickupDateTime.format('hh:mm A'),
                     'return_date': returnDateTime.format('YYYY/MM/DD'),
-                    'return_time': returnDateTime.format('HH:mm'),
+                    'return_time': returnDateTime.format('hh:mm A'),
                     'rental_days': rentalDays,
                     'total_price': totalPrice
                 }
