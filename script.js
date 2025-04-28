@@ -4,6 +4,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
     const html = document.documentElement;
     const currentYearSpan = document.getElementById('current-year');
+    const navbar = document.querySelector('.navbar');
+
+    // --- Navbar Scroll Behavior ---
+    let lastScrollTop = 0;
+    const scrollThreshold = 50; // Minimum scroll amount to trigger hide/show
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        if (Math.abs(scrollTop - lastScrollTop) > scrollThreshold) {
+            if (scrollTop > lastScrollTop) {
+                // Scrolling down
+                navbar.classList.add('hidden');
+            } else {
+                // Scrolling up
+                navbar.classList.remove('hidden');
+            }
+            lastScrollTop = scrollTop;
+        }
+    });
 
     // --- Theme (Dark/Light Mode) --- 
     const currentTheme = localStorage.getItem('theme') || 'light';
