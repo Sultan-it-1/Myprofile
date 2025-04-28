@@ -196,10 +196,17 @@ img {
     /* background-color: var(--navbar-bg-clr); */ /* Applied via glassmorphism */
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     padding: 1rem 0;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000;
-    transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+    transition: transform 0.3s ease, background-color var(--transition-speed), box-shadow var(--transition-speed);
+    transform: translateY(0);
+}
+
+.navbar.hidden {
+    transform: translateY(-100%);
 }
 
 /* Glassmorphism Effect */
@@ -612,4 +619,4 @@ html[dir='ltr'] #resume ul {
 /* AOS Animations adjustments (optional) - Empty rules removed */
 
 
-// Ensure no empty rules remain below 
+/* Ensure no empty rules remain below */ 
