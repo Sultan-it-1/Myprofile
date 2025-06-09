@@ -1,0 +1,17 @@
+[
+  {
+    "title_ar": "مقدمة في React.js",
+    "title_en": "Introduction to React.js",
+    "file": "react.html"
+  },
+  {
+    "title_ar": "تطوير APIs باستخدام Node.js",
+    "title_en": "Developing APIs with Node.js",
+    "file": "node.html"
+  },
+  {
+    "title_ar": "تصميم قواعد البيانات مع MongoDB",
+    "title_en": "Database Design with MongoDB",
+    "file": "mongodb.html"
+  }
+]
