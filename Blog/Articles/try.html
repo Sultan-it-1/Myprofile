@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مولد مقالات تقنية - الإصدار المحسّن</title>
+    <title>مولد مقالات تقنية متقدم</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.css">
     <style>
         :root {
             --primary: #3498db;
@@ -150,7 +151,10 @@
         }
         
         .btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
             padding: 12px 25px;
             background: var(--primary);
             color: white;
@@ -196,6 +200,14 @@
             background: #e67e22;
         }
         
+        .btn-danger {
+            background: var(--danger);
+        }
+        
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+        
         .preview {
             background: #f8f9fa;
             border-radius: 10px;
@@ -230,7 +242,7 @@
         }
         
         .code-block {
-            background: #e3e0e0;
+            background: #2d2d2d;
             border-radius: 8px;
             overflow: hidden;
             margin: 25px 0;
@@ -242,7 +254,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 12px 20px;
-            background: #000000;
+            background: #1e1e1e;
             color: #ccc;
             font-size: 0.9rem;
         }
@@ -302,7 +314,7 @@
             background: white;
             border-radius: 15px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(199, 18, 18, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             margin-top: 30px;
             display: none;
         }
@@ -409,13 +421,94 @@
             font-size: 0.9rem;
             color: #777;
         }
+        
+        .sections-container {
+            margin-top: 20px;
+            border: 2px dashed #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 100px;
+        }
+        
+        .section-item {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            position: relative;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+        }
+        
+        .section-item:hover {
+            border-color: var(--primary);
+            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.2);
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .section-type {
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .section-controls {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .section-controls button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+        
+        .section-content {
+            padding: 10px 0;
+        }
+        
+        .section-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .section-handle {
+            cursor: move;
+            padding: 5px;
+            background: #f0f0f0;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+        
+        .empty-sections {
+            text-align: center;
+            color: #777;
+            padding: 20px;
+            font-style: italic;
+        }
+        
+        .sortable-ghost {
+            opacity: 0.5;
+            background: #e3f2fd;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-code"></i> مولد مقالات تقنية - الإصدار المحسّن</h1>
-            <p>أداة متطورة لإنشاء مقالات برمجية بتنسيق HTML مع إبراز الأكواد البرمجية وتنسيقها بشكل احترافي</p>
+            <h1><i class="fas fa-code"></i> مولد مقالات تقنية متقدم</h1>
+            <p>أداة متطورة لإنشاء مقالات برمجية مع دعم أقسام متعددة وإمكانية إعادة الترتيب</p>
         </header>
         
         <div class="app-container">
@@ -424,7 +517,7 @@
                 
                 <div class="tabs">
                     <div class="tab active" data-tab="content">المحتوى</div>
-                    <div class="tab" data-tab="code">الأكواد</div>
+                    <div class="tab" data-tab="sections">الأقسام</div>
                     <div class="tab" data-tab="settings">الإعدادات</div>
                 </div>
                 
@@ -450,60 +543,27 @@
                             <input type="text" id="meta-en" class="form-control" value="Published on June 3, 2024 | By Sultan Ayidh">
                         </div>
                     </div>
-                    
-                    <div class="form-group">
-                        <label for="content-ar">المحتوى (العربية)</label>
-                        <textarea id="content-ar" class="form-control">Node.js يتيح لنا بناء خوادم قوية وسريعة. سنتعلم كيفية إنشاء API بسيط باستخدام Express.js.</textarea>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="content-en">المحتوى (الإنجليزية)</label>
-                        <textarea id="content-en" class="form-control">Node.js allows us to build powerful and fast servers. We'll learn how to create a simple API using Express.js.</textarea>
-                    </div>
                 </div>
                 
-                <div class="tab-content" id="code-tab">
+                <div class="tab-content" id="sections-tab">
                     <div class="form-group">
-                        <label for="code-lang">لغة البرمجة</label>
-                        <select id="code-lang" class="form-control">
-                            <option value="JavaScript">JavaScript</option>
-                            <option value="Python">Python</option>
-                            <option value="HTML">HTML</option>
-                            <option value="CSS">CSS</option>
-                            <option value="PHP">PHP</option>
-                            <option value="Java">Java</option>
-                            <option value="C++">C++</option>
-                            <option value="SQL">SQL</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="code-content">الكود البرمجي</label>
-                        <textarea id="code-content" class="form-control" rows="12">const express = require('express');
-const app = express();
-
-app.use(express.json());
-
-// GET endpoint
-app.get('/api/users', (req, res) => {
-  res.json([
-    { id: 1, name: 'أحمد' },
-    { id: 2, name: 'فاطمة' }
-  ]);
-});
-
-// POST endpoint
-app.post('/api/users', (req, res) => {
-  const { name } = req.body;
-  res.json({ message: `تم إنشاء المستخدم ${name} بنجاح` });
-});
-
-app.listen(3000, () => {
-  console.log('Server running on port 3000');
-});</textarea>
-                        <div class="status-bar">
-                            <span>عدد الأسطر: <span id="line-count">15</span></span>
-                            <span>عدد الأحرف: <span id="char-count">520</span></span>
+                        <h3>إدارة أقسام المقالة</h3>
+                        <p>يمكنك إضافة أقسام نصية أو برمجية وإعادة ترتيبها حسب الحاجة</p>
+                        
+                        <div class="section-actions">
+                            <button id="add-text-section" class="btn">
+                                <i class="fas fa-paragraph"></i> إضافة قسم نصي
+                            </button>
+                            <button id="add-code-section" class="btn">
+                                <i class="fas fa-code"></i> إضافة قسم برمجي
+                            </button>
+                        </div>
+                        
+                        <div class="sections-container" id="sections-container">
+                            <div class="empty-sections">
+                                <i class="fas fa-info-circle"></i>
+                                <p>لم يتم إضافة أي أقسام بعد</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -542,7 +602,11 @@ app.listen(3000, () => {
             <div class="preview-container">
                 <h2 class="section-title"><i class="fas fa-eye"></i> معاينة النتيجة</h2>
                 <div class="preview" id="live-preview">
-                    <!-- سيتم ملئ المحتوى هنا بالجافاسكريبت -->
+                    <article class="article">
+                        <h2>تطوير APIs باستخدام Node.js</h2>
+                        <div class="article-meta">نُشر في 3 يونيو 2024 | بواسطة سلطان عايض</div>
+                        <p class="empty-preview">أضف أقسامًا لرؤية معاينة المقالة هنا...</p>
+                    </article>
                 </div>
             </div>
         </div>
@@ -570,6 +634,7 @@ app.listen(3000, () => {
     
     <div class="notification" id="notification">تم نسخ الكود بنجاح!</div>
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // عناصر الواجهة
@@ -582,19 +647,22 @@ app.listen(3000, () => {
             const livePreview = document.getElementById('live-preview');
             const tabs = document.querySelectorAll('.tab');
             const tabContents = document.querySelectorAll('.tab-content');
+            const addTextBtn = document.getElementById('add-text-section');
+            const addCodeBtn = document.getElementById('add-code-section');
+            const sectionsContainer = document.getElementById('sections-container');
             
             // عناصر الإدخال
             const titleAr = document.getElementById('title-ar');
             const titleEn = document.getElementById('title-en');
             const metaAr = document.getElementById('meta-ar');
             const metaEn = document.getElementById('meta-en');
-            const contentAr = document.getElementById('content-ar');
-            const contentEn = document.getElementById('content-en');
-            const codeLang = document.getElementById('code-lang');
-            const codeContent = document.getElementById('code-content');
             const themeSelect = document.getElementById('theme');
             const autoPreview = document.getElementById('auto-preview');
             const syntaxHighlight = document.getElementById('syntax-highlight');
+            
+            // متغيرات التطبيق
+            let sections = [];
+            let sectionCounter = 0;
             
             // إدارة التبويبات
             tabs.forEach(tab => {
@@ -610,40 +678,43 @@ app.listen(3000, () => {
                 });
             });
             
-            // تحديث المعاينة عند تغيير المدخلات
-            const updatePreview = () => {
-                if (!autoPreview.checked) return;
+            // إضافة قسم نصي
+            addTextBtn.addEventListener('click', function() {
+                sectionCounter++;
+                const sectionId = `section-${sectionCounter}`;
                 
-                const code = highlightCode(codeContent.value);
-                
-                livePreview.innerHTML = `
-                    <article class="article">
-                        <h2>${escapeHtml(titleAr.value)}</h2>
-                        <div class="article-meta">${escapeHtml(metaAr.value)}</div>
-                        <p>${escapeHtml(contentAr.value)}</p>
-                        
-                        <div class="code-block">
-                            <div class="code-header">
-                                <span class="code-lang">${escapeHtml(codeLang.value)}</span>
-                                <button class="copy-btn">Copy</button>
-                            </div>
-                            <pre><code>${code}</code></pre>
-                        </div>
-                    </article>
-                `;
-                
-                // إضافة أحداث النسخ لأزرار النسخ في المعاينة
-                livePreview.querySelectorAll('.copy-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        const codeBlock = this.parentElement.nextElementSibling;
-                        const text = codeBlock.textContent;
-                        copyToClipboard(text);
-                        
-                        // عرض إشعار النسخ
-                        showNotification('تم نسخ الكود بنجاح!', 'success');
-                    });
+                sections.push({
+                    id: sectionId,
+                    type: 'text',
+                    contentAr: '',
+                    contentEn: ''
                 });
-            };
+                
+                renderSections();
+                updatePreview();
+                
+                // التبديل إلى تبويب الأقسام
+                document.querySelector('.tab[data-tab="sections"]').click();
+            });
+            
+            // إضافة قسم برمجي
+            addCodeBtn.addEventListener('click', function() {
+                sectionCounter++;
+                const sectionId = `section-${sectionCounter}`;
+                
+                sections.push({
+                    id: sectionId,
+                    type: 'code',
+                    language: 'JavaScript',
+                    code: '// اكتب الكود الخاص بك هنا\nconsole.log("مرحبًا بالعالم!");'
+                });
+                
+                renderSections();
+                updatePreview();
+                
+                // التبديل إلى تبويب الأقسام
+                document.querySelector('.tab[data-tab="sections"]').click();
+            });
             
             // تهرب الأحرف الخاصة في HTML
             const escapeHtml = (text) => {
@@ -701,9 +772,225 @@ app.listen(3000, () => {
                 return code;
             };
             
+            // عرض الأقسام في الواجهة
+            const renderSections = () => {
+                if (sections.length === 0) {
+                    sectionsContainer.innerHTML = `
+                        <div class="empty-sections">
+                            <i class="fas fa-info-circle"></i>
+                            <p>لم يتم إضافة أي أقسام بعد</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                sectionsContainer.innerHTML = '';
+                
+                sections.forEach((section, index) => {
+                    const sectionElement = document.createElement('div');
+                    sectionElement.className = 'section-item';
+                    sectionElement.dataset.id = section.id;
+                    
+                    if (section.type === 'text') {
+                        sectionElement.innerHTML = `
+                            <div class="section-header">
+                                <div class="section-type">
+                                    <i class="fas fa-paragraph"></i> قسم نصي #${index + 1}
+                                </div>
+                                <div class="section-controls">
+                                    <button class="btn btn-danger delete-section" data-id="${section.id}">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    <span class="section-handle">
+                                        <i class="fas fa-arrows-alt"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="section-content">
+                                <div class="dual-input">
+                                    <div class="form-group">
+                                        <label>المحتوى (العربية)</label>
+                                        <textarea class="form-control section-text-ar" data-id="${section.id}" placeholder="أدخل المحتوى النصي بالعربية">${section.contentAr || ''}</textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>المحتوى (الإنجليزية)</label>
+                                        <textarea class="form-control section-text-en" data-id="${section.id}" placeholder="أدخل المحتوى النصي بالإنجليزية">${section.contentEn || ''}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        sectionElement.innerHTML = `
+                            <div class="section-header">
+                                <div class="section-type">
+                                    <i class="fas fa-code"></i> قسم برمجي #${index + 1}
+                                </div>
+                                <div class="section-controls">
+                                    <button class="btn btn-danger delete-section" data-id="${section.id}">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                    <span class="section-handle">
+                                        <i class="fas fa-arrows-alt"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="section-content">
+                                <div class="form-group">
+                                    <label>لغة البرمجة</label>
+                                    <select class="form-control section-code-lang" data-id="${section.id}">
+                                        <option value="JavaScript" ${section.language === 'JavaScript' ? 'selected' : ''}>JavaScript</option>
+                                        <option value="Python" ${section.language === 'Python' ? 'selected' : ''}>Python</option>
+                                        <option value="HTML" ${section.language === 'HTML' ? 'selected' : ''}>HTML</option>
+                                        <option value="CSS" ${section.language === 'CSS' ? 'selected' : ''}>CSS</option>
+                                        <option value="PHP" ${section.language === 'PHP' ? 'selected' : ''}>PHP</option>
+                                        <option value="Java" ${section.language === 'Java' ? 'selected' : ''}>Java</option>
+                                        <option value="C++" ${section.language === 'C++' ? 'selected' : ''}>C++</option>
+                                        <option value="SQL" ${section.language === 'SQL' ? 'selected' : ''}>SQL</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>الكود البرمجي</label>
+                                    <textarea class="form-control section-code-content" data-id="${section.id}" rows="6">${section.code || ''}</textarea>
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    sectionsContainer.appendChild(sectionElement);
+                });
+                
+                // إضافة أحداث لحذف الأقسام
+                document.querySelectorAll('.delete-section').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const sectionId = this.dataset.id;
+                        sections = sections.filter(s => s.id !== sectionId);
+                        renderSections();
+                        updatePreview();
+                        showNotification('تم حذف القسم بنجاح', 'success');
+                    });
+                });
+                
+                // إضافة أحداث لتحديث المحتوى
+                document.querySelectorAll('.section-text-ar, .section-text-en, .section-code-content').forEach(input => {
+                    input.addEventListener('input', function() {
+                        const sectionId = this.dataset.id;
+                        const section = sections.find(s => s.id === sectionId);
+                        
+                        if (section.type === 'text') {
+                            if (this.classList.contains('section-text-ar')) {
+                                section.contentAr = this.value;
+                            } else {
+                                section.contentEn = this.value;
+                            }
+                        } else {
+                            section.code = this.value;
+                        }
+                        
+                        updatePreview();
+                    });
+                });
+                
+                document.querySelectorAll('.section-code-lang').forEach(select => {
+                    select.addEventListener('change', function() {
+                        const sectionId = this.dataset.id;
+                        const section = sections.find(s => s.id === sectionId);
+                        section.language = this.value;
+                        updatePreview();
+                    });
+                });
+                
+                // تمكين السحب والإفلات
+                new Sortable(sectionsContainer, {
+                    handle: '.section-handle',
+                    animation: 150,
+                    ghostClass: 'sortable-ghost',
+                    onEnd: function(evt) {
+                        const movedItem = sections[evt.oldIndex];
+                        sections.splice(evt.oldIndex, 1);
+                        sections.splice(evt.newIndex, 0, movedItem);
+                        updatePreview();
+                    }
+                });
+            };
+            
+            // تحديث المعاينة الحية
+            const updatePreview = () => {
+                if (!autoPreview.checked) return;
+                
+                if (sections.length === 0) {
+                    livePreview.innerHTML = `
+                        <article class="article">
+                            <h2>${escapeHtml(titleAr.value)}</h2>
+                            <div class="article-meta">${escapeHtml(metaAr.value)}</div>
+                            <p class="empty-preview">أضف أقسامًا لرؤية معاينة المقالة هنا...</p>
+                        </article>
+                    `;
+                    return;
+                }
+                
+                let previewContent = `
+                    <article class="article">
+                        <h2>${escapeHtml(titleAr.value)}</h2>
+                        <div class="article-meta">${escapeHtml(metaAr.value)}</div>
+                `;
+                
+                sections.forEach(section => {
+                    if (section.type === 'text') {
+                        previewContent += `
+                            <p>${escapeHtml(section.contentAr)}</p>
+                        `;
+                    } else {
+                        const code = highlightCode(section.code);
+                        previewContent += `
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-lang">${escapeHtml(section.language)}</span>
+                                    <button class="copy-btn">Copy</button>
+                                </div>
+                                <pre><code>${code}</code></pre>
+                            </div>
+                        `;
+                    }
+                });
+                
+                previewContent += `</article>`;
+                livePreview.innerHTML = previewContent;
+                
+                // إضافة أحداث النسخ لأزرار النسخ في المعاينة
+                livePreview.querySelectorAll('.copy-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const codeBlock = this.parentElement.nextElementSibling;
+                        const text = codeBlock.textContent;
+                        copyToClipboard(text);
+                        
+                        // عرض إشعار النسخ
+                        showNotification('تم نسخ الكود بنجاح!', 'success');
+                    });
+                });
+            };
+            
             // توليد كود HTML
             const generateHtmlCode = () => {
-                const code = highlightCode(codeContent.value);
+                let sectionsHtml = '';
+                
+                sections.forEach(section => {
+                    if (section.type === 'text') {
+                        sectionsHtml += `
+                            <p>${escapeHtml(section.contentAr)}</p>
+                        `;
+                    } else {
+                        const code = highlightCode(section.code);
+                        sectionsHtml += `
+                            <div class="code-block">
+                                <div class="code-header">
+                                    <span class="code-lang">${escapeHtml(section.language)}</span>
+                                    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                                </div>
+                                <pre><code>${code}</code></pre>
+                            </div>
+                        `;
+                    }
+                });
                 
                 return `<!DOCTYPE html>
 <html lang="ar">
@@ -823,15 +1110,7 @@ app.listen(3000, () => {
     <article class="article">
         <h2>${escapeHtml(titleAr.value)}</h2>
         <div class="article-meta">${escapeHtml(metaAr.value)}</div>
-        <p>${escapeHtml(contentAr.value)}</p>
-        
-        <div class="code-block">
-            <div class="code-header">
-                <span class="code-lang">${escapeHtml(codeLang.value)}</span>
-                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-            </div>
-            <pre><code>${code}</code></pre>
-        </div>
+        ${sectionsHtml}
     </article>
     
     <script>
@@ -886,17 +1165,13 @@ app.listen(3000, () => {
                 }, 3000);
             };
             
-            // تحديث عدد الأسطر والأحرف
-            const updateCodeStats = () => {
-                const lines = codeContent.value.split('\n').length;
-                const chars = codeContent.value.length;
-                
-                document.getElementById('line-count').textContent = lines;
-                document.getElementById('char-count').textContent = chars;
-            };
-            
             // أحداث المستخدم
             generateBtn.addEventListener('click', function() {
+                if (sections.length === 0) {
+                    showNotification('يرجى إضافة أقسام أولاً!', 'error');
+                    return;
+                }
+                
                 const htmlCode = generateHtmlCode();
                 htmlOutput.value = htmlCode;
                 resultContainer.style.display = 'block';
@@ -933,13 +1208,6 @@ app.listen(3000, () => {
             titleEn.addEventListener('input', updatePreview);
             metaAr.addEventListener('input', updatePreview);
             metaEn.addEventListener('input', updatePreview);
-            contentAr.addEventListener('input', updatePreview);
-            contentEn.addEventListener('input', updatePreview);
-            codeLang.addEventListener('change', updatePreview);
-            codeContent.addEventListener('input', function() {
-                updatePreview();
-                updateCodeStats();
-            });
             
             // تغيير السمة اللونية
             themeSelect.addEventListener('change', function() {
@@ -951,8 +1219,8 @@ app.listen(3000, () => {
             });
             
             // التهيئة الأولية
+            renderSections();
             updatePreview();
-            updateCodeStats();
         });
     </script>
 </body>
