@@ -1,30 +1,11 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>تسجيل دخول وخروج الزوار</title>
-  <script>
-    function logVisitor(action) {
-      fetch("https://sultan.free.nf/log.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: `action=${action}`
-      }).then(res => res.text()).then(console.log);
-    }
-
-    // تسجيل وقت الدخول
-    window.addEventListener('load', () => {
-      logVisitor("دخل");
-    });
-
-    // تسجيل وقت الخروج
-    window.addEventListener('beforeunload', () => {
-      navigator.sendBeacon("log.php", new URLSearchParams({ action: "خرج" }));
-    });
-  </script>
+  <meta charset="UTF-8">
+  <title>FingerprintJS Test</title>
+  <script type="module" src="fingerprint.js"></script>
 </head>
 <body>
-  <h1>أهلاً بك</h1>
-  <p>هذا السكربت يسجل دخول وخروج الزوار حسب IP الخاص بهم.</p>
+  <h1>Check Console for Fingerprint ID</h1>
 </body>
 </html>
