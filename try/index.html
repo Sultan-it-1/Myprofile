@@ -5,7 +5,7 @@
   <title>تسجيل دخول وخروج الزوار</title>
   <script>
     function logVisitor(action) {
-      fetch("http://sultan.free.nf/log.php", {
+      fetch("https://sultan.free.nf/log.php", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: `action=${action}`
