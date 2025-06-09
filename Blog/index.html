@@ -1,1 +1,281 @@
-hi
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>مدونة سُلطان</title>
+  
+  <!-- استيراد خطوط عربية -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet" />
+  
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    
+    :root {
+      /* Light Mode Colors */
+      --primary-color: #0ea5e9;
+      --bg-color: #f9fafb;
+      --text-color: #111827;
+      --post-bg: white;
+      --post-shadow: rgba(0,0,0,0.1);
+      --footer-bg: #e0e7ff;
+      --footer-text: #1e3a8a;
+    }
+    
+    body.dark {
+      /* Dark Mode Colors */
+      --primary-color: #38bdf8;
+      --bg-color: #121212;
+      --text-color: #e4e4e7;
+      --post-bg: #1e293b;
+      --post-shadow: rgba(0,0,0,0.7);
+      --footer-bg: #1e293b;
+      --footer-text: #60a5fa;
+    }
+    
+    header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 8px var(--primary-color);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    header h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 600;
+      transition: opacity 0.3s;
+    }
+    
+    nav a:hover {
+      opacity: 0.8;
+    }
+    
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      flex-grow: 1;
+    }
+    
+    .post {
+      background: var(--post-bg);
+      padding: 1.5rem 2rem;
+      margin-bottom: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px var(--post-shadow);
+      transition: box-shadow 0.3s, background-color 0.3s;
+      cursor: pointer;
+    }
+    
+    .post:hover {
+      box-shadow: 0 6px 12px var(--post-shadow);
+    }
+    
+    .post h2 {
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+    
+    .post p {
+      color: var(--text-color);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: var(--footer-bg);
+      color: var(--footer-text);
+      font-weight: 600;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    
+    /* زر التبديل */
+    .controls {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    button {
+      cursor: pointer;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-family: 'Cairo', sans-serif;
+      background-color: white;
+      color: var(--primary-color);
+      transition: background-color 0.3s, color 0.3s;
+      box-shadow: 0 2px 6px rgba(14,165,233,0.3);
+    }
+    
+    button:hover {
+      background-color: var(--primary-color);
+      color: white;
+      box-shadow: 0 4px 12px rgba(14,165,233,0.6);
+    }
+    
+    body.dark button {
+      background-color: #334155;
+      color: var(--primary-color);
+      box-shadow: none;
+    }
+    
+    body.dark button:hover {
+      background-color: var(--primary-color);
+      color: white;
+      box-shadow: 0 4px 12px rgba(56,189,248,0.6);
+    }
+    
+    /* Responsive */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+      }
+      nav {
+        margin-top: 0;
+      }
+      nav a {
+        margin-left: 0;
+        margin-right: 1rem;
+      }
+      main {
+        margin: 1rem;
+      }
+      .controls {
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 id="site-title">مدونة سُلطان</h1>
+  <div class="controls">
+    <button id="toggle-lang">English</button>
+    <button id="toggle-theme">وضع الليل</button>
+  </div>
+</header>
+
+<main>
+  <article class="post" tabindex="0" data-ar-title="كيف تبدأ بتعلم البرمجة بسهولة" data-ar-desc="في هذا المقال، سنتعرف على الخطوات العملية لتبدأ رحلتك في عالم البرمجة بأقل تعقيد."
+           data-en-title="How to Start Learning Programming Easily" data-en-desc="In this article, we explore practical steps to begin your programming journey with ease.">
+    <h2>كيف تبدأ بتعلم البرمجة بسهولة</h2>
+    <p>في هذا المقال، سنتعرف على الخطوات العملية لتبدأ رحلتك في عالم البرمجة بأقل تعقيد.</p>
+  </article>
+  
+  <article class="post" tabindex="0" data-ar-title="أفضل الأدوات لتطوير تطبيقات الويب" data-ar-desc="نستعرض في هذا المقال مجموعة من الأدوات التي تساعدك في بناء تطبيقات ويب حديثة وفعالة."
+           data-en-title="Best Tools for Web Application Development" data-en-desc="This article reviews a set of tools that help you build modern and efficient web applications.">
+    <h2>أفضل الأدوات لتطوير تطبيقات الويب</h2>
+    <p>نستعرض في هذا المقال مجموعة من الأدوات التي تساعدك في بناء تطبيقات ويب حديثة وفعالة.</p>
+  </article>
+  
+  <article class="post" tabindex="0" data-ar-title="نصائح لتصميم واجهة مستخدم جذابة" data-ar-desc="تعرف على أهم المبادئ والنصائح التي تجعل من تصميم الواجهات تجربة ممتعة للمستخدمين."
+           data-en-title="Tips for Designing an Attractive User Interface" data-en-desc="Learn the main principles and tips that make UI design enjoyable for users.">
+    <h2>نصائح لتصميم واجهة مستخدم جذابة</h2>
+    <p>تعرف على أهم المبادئ والنصائح التي تجعل من تصميم الواجهات تجربة ممتعة للمستخدمين.</p>
+  </article>
+</main>
+
+<footer>
+  &copy; 2025 مدونة سُلطان. جميع الحقوق محفوظة.
+</footer>
+
+<script>
+  // حفظ واسترجاع وضع الثيم من localStorage
+  const toggleThemeBtn = document.getElementById('toggle-theme');
+  const toggleLangBtn = document.getElementById('toggle-lang');
+  const body = document.body;
+  const posts = document.querySelectorAll('.post');
+  const siteTitle = document.getElementById('site-title');
+  const footer = document.querySelector('footer');
+
+  // تحميل الحالة من localStorage
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  const savedLang = localStorage.getItem('lang') || 'ar';
+
+  function setTheme(theme) {
+    if (theme === 'dark') {
+      body.classList.add('dark');
+      toggleThemeBtn.textContent = 'وضع النهار';
+    } else {
+      body.classList.remove('dark');
+      toggleThemeBtn.textContent = 'وضع الليل';
+    }
+    localStorage.setItem('theme', theme);
+  }
+
+  function setLanguage(lang) {
+    if (lang === 'en') {
+      toggleLangBtn.textContent = 'العربية';
+      siteTitle.textContent = "Sultan's Blog";
+      footer.innerHTML = "&copy; 2025 Sultan's Blog. All rights reserved.";
+      
+      posts.forEach(post => {
+        post.querySelector('h2').textContent = post.getAttribute('data-en-title');
+        post.querySelector('p').textContent = post.getAttribute('data-en-desc');
+      });
+    } else {
+      toggleLangBtn.textContent = 'English';
+      siteTitle.textContent = 'مدونة سُلطان';
+      footer.innerHTML = '&copy; 2025 مدونة سُلطان. جميع الحقوق محفوظة.';
+      
+      posts.forEach(post => {
+        post.querySelector('h2').textContent = post.getAttribute('data-ar-title');
+        post.querySelector('p').textContent = post.getAttribute('data-ar-desc');
+      });
+    }
+    localStorage.setItem('lang', lang);
+  }
+
+  // ضبط الحالة عند التحميل
+  setTheme(savedTheme);
+  setLanguage(savedLang);
+
+  // أزرار التبديل
+  toggleThemeBtn.addEventListener('click', () => {
+    const newTheme = body.classList.contains('dark') ? 'light' : 'dark';
+    setTheme(newTheme);
+  });
+
+  toggleLangBtn.addEventListener('click', () => {
+    const currentLang = localStorage.getItem('lang') || 'ar';
+    const newLang = currentLang === 'ar' ? 'en' : 'ar';
+    setLanguage(newLang);
+  });
+</script>
+
+</body>
+</html>
