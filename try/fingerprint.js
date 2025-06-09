@@ -1,7 +1,7 @@
 // fingerprint.js
 
 // Initialize the agent on page load.
-const fpPromise = import('https://fpjscdn.net/v3/os5VPniu6y99nHWH1O2B')
+const fpPromise = import('https://fpjscdn.net/v3/XrDRrmVoT8HUwLg1yH5Q')
   .then(FingerprintJS => FingerprintJS.load({
     region: "eu"
   }));
@@ -13,3 +13,4 @@ fpPromise
     const visitorId = result.visitorId;
     console.log(visitorId);
   });
+
