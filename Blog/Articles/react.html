@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>مقدمة في React.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+       <article class="article">
+                        <h2 data-ar="مقدمة في React.js" data-en="Introduction to React.js">مقدمة في React.js</h2>
+                        <div class="article-meta" data-ar="نُشر في 5 يونيو 2024 | بواسطة سلطان عايض" data-en="Published on June 5, 2024 | By Sultan Ayidh">نُشر في 5 يونيو 2024 | بواسطة سلطان عايض</div>
+                        <p data-ar="React.js هي مكتبة JavaScript قوية لبناء واجهات المستخدم التفاعلية. في هذا المقال، سنتعلم الأساسيات والمفاهيم المهمة." data-en="React.js is a powerful JavaScript library for building interactive user interfaces. In this article, we'll learn the basics and important concepts.">React.js هي مكتبة JavaScript قوية لبناء واجهات المستخدم التفاعلية. في هذا المقال، سنتعلم الأساسيات والمفاهيم المهمة.</p>
+                        
+                        <div class="code-block">
+                            <div class="code-header">
+                                <span class="code-lang">JavaScript</span>
+                                <button class="copy-btn" onclick="copyCode(this)">Copy</button>
+                            </div>
+                            <pre><code><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;
+
+<span class="keyword">function</span> <span class="function">App</span>() {
+  <span class="keyword">const</span> [count, setCount] = React.<span class="function">useState</span>(<span class="number">0</span>);
+
+  <span class="keyword">return</span> (
+    <span class="tag">&lt;div&gt;</span>
+      <span class="tag">&lt;h1&gt;</span>Counter: {count}<span class="tag">&lt;/h1&gt;</span>
+      <span class="tag">&lt;button</span> <span class="attr">onClick</span>={() =&gt; <span class="function">setCount</span>(count + <span class="number">1</span>)}<span class="tag">&gt;</span>
+        Increment
+      <span class="tag">&lt;/button&gt;</span>
+    <span class="tag">&lt;/div&gt;</span>
+  );
+}
+
+<span class="keyword">export</span> <span class="keyword">default</span> App;</code></pre>
+                        </div>
+                        
+                        <p data-ar="هذا المثال يوضح كيفية استخدام useState Hook لإدارة الحالة في مكون React وظيفي." data-en="This example shows how to use the useState Hook to manage state in a functional React component.">هذا المثال يوضح كيفية استخدام useState Hook لإدارة الحالة في مكون React وظيفي.</p>
+                    </article>
+
+    <script src="../script.js"></script>
+</body>
+</html>
