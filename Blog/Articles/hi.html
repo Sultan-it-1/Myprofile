@@ -5,6 +5,7 @@
     <title>تطوير APIs باستخدام Node.js</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -198,6 +199,49 @@
                         
     </article>
     
+    <script>
+        function copyCode(button) {
+            const codeBlock = button.closest('.code-block');
+            const codeContent = codeBlock.querySelector('code').textContent;
+            
+            const textarea = document.createElement('textarea');
+            textarea.value = codeContent;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            
+            const originalText = button.textContent;
+            button.textContent = 'تم النسخ!';
+            
+            setTimeout(() => {
+                button.textContent = originalText;
+            }, 2000);
+        }
+        
+        // دالة لتغيير اللغة
+        function changeLanguage(lang) {
+            // تغيير العناوين
+            const title = document.querySelector('.article h2');
+            title.textContent = title.getAttribute('data-' + lang);
+            
+            // تغيير معلومات النشر
+            const meta = document.querySelector('.article-meta');
+            meta.textContent = meta.getAttribute('data-' + lang);
+            
+            // تغيير المحتوى النصي
+            document.querySelectorAll('[data-ar], [data-en]').forEach(el => {
+                if (el.tagName !== 'H2' && el.tagName !== 'DIV' && !el.classList.contains('article-meta')) {
+                    el.textContent = el.getAttribute('data-' + lang);
+                }
+            });
+            
+            // تغيير النصوص البديلة للصور
+            document.querySelectorAll('img').forEach(img => {
+                img.alt = img.getAttribute('data-' + lang + '-alt');
+            });
+        }
+    </script>
     <script src="../script.js"></script>
 
 </body>
