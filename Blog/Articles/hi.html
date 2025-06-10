@@ -4,8 +4,170 @@
     <meta charset="UTF-8">
     <title>تطوير APIs باستخدام Node.js</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../styles.css">
-
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+        
+        .article {
+            margin-bottom: 40px;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .article h2 {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .article-meta {
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            margin: 10px 0 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .article p {
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .text-content ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .text-content li {
+            margin-bottom: 8px;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            border-radius: 8px;
+            overflow: hidden;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            background: #1e1e1e;
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        .code-lang {
+            font-weight: 600;
+        }
+        
+        .copy-btn {
+            background: #3a3a3a;
+            color: #ccc;
+            border: none;
+            padding: 5px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .copy-btn:hover {
+            background: #3498db;
+            color: white;
+        }
+        
+        pre {
+            margin: 0;
+            padding: 20px;
+            overflow-x: auto;
+        }
+        
+        code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.95rem;
+            color: #f8f8f2;
+        }
+        
+        .keyword {
+            color: #569cd6;
+        }
+        
+        .function {
+            color: #dcdcaa;
+        }
+        
+        .string {
+            color: #ce9178;
+        }
+        
+        .number {
+            color: #b5cea8;
+        }
+        
+        .comment {
+            color: #6a9955;
+            font-style: italic;
+        }
+        
+        .variable {
+            color: #9cdcfe;
+        }
+        
+        .operator {
+            color: #d4d4d4;
+        }
+        
+        .image-section {
+            text-align: center;
+            margin: 25px 0;
+        }
+        
+        .image-section img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-caption {
+            text-align: center;
+            font-style: italic;
+            color: #777;
+            margin-top: 10px;
+        }
+        
+        .link-section {
+            margin: 25px 0;
+            padding: 15px;
+            background: #f0f8ff;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+        
+        .link-section h3 {
+            margin-top: 0;
+        }
+        
+        .link-section a {
+            color: #1976d2;
+            text-decoration: none;
+        }
+        
+        .link-section a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
     <article class="article">
@@ -35,6 +197,8 @@
                             </div>
                         
     </article>
+    
     <script src="../script.js"></script>
+
 </body>
 </html>
