@@ -1,17 +1,18 @@
 [
   {
-    "title_ar": "مقدمة في React.js",
-    "title_en": "Introduction to React.js",
-    "file": "react.html"
+    "title_ar": "كيف تنشئ سيرفر على AWS لتشغيل WireGuard VPN",
+    "title_en": "How to create a server on AWS to run WireGuard VPN",
+    "file": "aws.html"
   },
   {
-    "title_ar": "تطوير APIs باستخدام Node.js",
-    "title_en": "Developing APIs with Node.js",
-    "file": "node.html"
+    "title_ar": " شرح انشاء سيرفر WireGuard VPN خاص بك",
+    "title_en": "How to create your own WireGuard VPN server",
+    "file": "wireguard.html"
   },
   {
-    "title_ar": "تصميم قواعد البيانات مع MongoDB",
-    "title_en": "Database Design with MongoDB",
-    "file": "hi.html"
+    "title_ar": "إعداد خادم لينكس آمن من الصفر",
+    "title_en": "Setting up a secure Linux server from scratch",
+    "file": "linux-server.html"
   }
 ]
+
