@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- تأكد من أن السمة dir و lang مضبوطة بشكل صحيح -->
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
@@ -6,6 +7,8 @@
     <title>مدونة تقنية</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
+
 <body>
     <div class="floating-shapes">
         <div class="shape"></div>
@@ -14,6 +17,7 @@
     </div>
 
     <header>
+        
         <nav class="container">
             <div class="logo" data-ar="مدونة تقنية" data-en="Tech Blog">مدونة تقنية</div>
             <div class="nav-links">
@@ -38,12 +42,16 @@
     <main>
         <!-- الصفحة الرئيسية -->
         <div id="home" class="page active">
-            <section class="hero">
-                <div class="container">
-                    <h1 data-ar="مرحباً بك في مدونتنا التقنية" data-en="Welcome to Our Tech Blog">مرحباً بك في مدونتنا التقنية</h1>
-                    <p data-ar="اكتشف أحدث التقنيات والابتكارات في عالم البرمجة والتكنولوجيا" data-en="Discover the latest technologies and innovations in programming and technology">اكتشف أحدث التقنيات والابتكارات في عالم البرمجة والتكنولوجيا</p>
-                    <button class="btn hero-btn" onclick="showPage('blog')" data-ar="استكشف المقالات" data-en="Explore Articles">استكشف المقالات</button>
-                </div>
+  <section class="hero">
+    <div class="container">
+      <h1 id="animated-text" data-ar="مرحبا بكم في مدونتنا التقنية" data-en="Welcome to Our Tech Blog"></h1>
+      <p data-ar="اكتشف أحدث التقنيات والابتكارات في عالم البرمجة والتكنولوجيا" data-en="Discover the latest technologies and innovations in programming and technology">
+        اكتشف أحدث التقنيات والابتكارات في عالم البرمجة والتكنولوجيا
+      </p>
+      <button class="btn hero-btn" onclick="showPage('blog')" data-ar="استكشف المقالات" data-en="Explore Articles">
+        استكشف المقالات
+      </button>
+    </div>
             </section>
 
             <section class="features">
