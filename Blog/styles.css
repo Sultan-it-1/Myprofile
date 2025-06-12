@@ -450,6 +450,44 @@ footer {
     color: var(--primary-color);
 }
 
+/* شريط التقدم في الأعلى */
+#progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: #e16cd0;
+  width: 0%;
+  z-index: 9999;
+  transition: width 0.2s ease-out;
+}
+
+/* زر العودة للأعلى */
+.back-to-top {
+  position: fixed;
+  bottom: 40px;
+  right: 30px;
+  padding: 10px 14px;
+  font-size: 20px;
+  background-color: #f6f8f600;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s;
+  z-index: 999;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background-color: #e890ea85;
+}
 
 
 @media (max-width: 768px) {
