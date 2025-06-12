@@ -235,6 +235,37 @@ body[data-theme='dark'] .navbar, body[data-theme='dark'] .glassmorphism {
     border-bottom: 1px solid rgba(51, 65, 85, 0.5);
 }
 
+.blog-card {
+    display: block;
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border-radius: 16px;
+    background-color: var(--card-bg, #a6f1f830);
+    color: var(--text-color, #333);
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+.blog-card .emoji {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+.blog-card h3 {
+    margin: 0.5rem 0;
+    font-size: 1.5rem;
+}
+.blog-card p {
+    font-size: 1rem;
+    color: #555;
+}
+
 .navbar .container {
     width: 100%;
     max-width: 1100px;
@@ -679,7 +710,3 @@ html[dir='ltr'] #resume ul {
      }
 }
 
-/* AOS Animations adjustments (optional) - Empty rules removed */
-
-
-/* Ensure no empty rules remain below */
