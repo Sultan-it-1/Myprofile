@@ -327,61 +327,7 @@ nav {
     font-size: 0.9rem;
 }
 
-.code-block {
-    background: #1e1e1e;
-    color: #d4d4d4;
-    border-radius: 10px;
-    padding: 1.5rem;
-    margin: 1rem 0;
-    position: relative;
-    overflow-x: auto;
-    border: 1px solid var(--border-color);
-}
 
-.code-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid #333;
-}
-
-.code-lang {
-    color: #569cd6;
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.copy-btn {
-    background: #007acc;
-    color: white;
-    border: none;
-    padding: 0.3rem 0.8rem;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 0.8rem;
-    transition: background 0.3s ease;
-}
-
-.copy-btn:hover {
-    background: #005a9e;
-}
-
-.copy-btn.copied {
-    background: #28a745;
-}
-
-pre {
-    margin: 0;
-    overflow-x: auto;
-}
-
-code {
-    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-    font-size: 0.9rem;
-    line-height: 1.5;
-}
 
 .keyword { color: #569cd6; }
 .string { color: #ce9178; }
@@ -503,6 +449,7 @@ footer {
 .article-title a:hover {
     color: var(--primary-color);
 }
+
 
 
 @media (max-width: 768px) {
