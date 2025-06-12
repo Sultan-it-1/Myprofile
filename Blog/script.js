@@ -122,7 +122,7 @@ function initAdvancedEffects() {
     // إنشاء زر العودة للأعلى
     const backToTop = document.createElement('button');
     backToTop.className = 'back-to-top';
-    backToTop.innerHTML = '↑';
+    backToTop.innerHTML='🔝';
     backToTop.onclick = () => window.scrollTo({ top: 0, behavior: 'smooth' });
     document.body.appendChild(backToTop);
 
