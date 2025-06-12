@@ -13,20 +13,24 @@ function toggleTheme() {
         localStorage.setItem('theme', 'dark');
     }
 }
-
-// تطبيق الوضع المحفوظ
+// في بداية الملف، قم بتعديل دالة applyTheme لتكون الافتراضية dark
 function applyTheme() {
-    const savedTheme = localStorage.getItem('theme');
+    const savedTheme = localStorage.getItem('theme') || 'dark'; // افتراضي ليلي
     const themeBtn = document.getElementById('themeBtn');
     
     if (savedTheme === 'dark') {
         document.body.setAttribute('data-theme', 'dark');
         themeBtn.textContent = '☀️';
+    } else {
+        document.body.removeAttribute('data-theme');
+        themeBtn.textContent = '🌙';
     }
 }
 
-// إدارة اللغة
+// تعديل المتغير currentLanguage ليكون الافتراضي عربي
 let currentLanguage = localStorage.getItem('language') || 'ar';
+
+// تعديل دالة changeLanguage لتطبيق RTL/LTR تلقائياً
 function changeLanguage(lang) {
     currentLanguage = lang;
     localStorage.setItem('language', lang);
@@ -42,7 +46,7 @@ function changeLanguage(lang) {
         }
     });
 
-    // تغيير اتجاه النص
+    // تغيير اتجاه النص تلقائياً
     if (lang === 'ar') {
         document.documentElement.setAttribute('lang', 'ar');
         document.documentElement.setAttribute('dir', 'rtl');
@@ -217,6 +221,8 @@ function createParticles() {
     document.body.appendChild(particlesContainer);
 }
 
+
+
 // تشغيل جميع التحسينات عند تحميل الصفحة
 document.addEventListener('DOMContentLoaded', function() {
     applyTheme();
@@ -225,23 +231,9 @@ document.addEventListener('DOMContentLoaded', function() {
     enhanceUserExperience();
     createParticles();
     
-    // تأثير الكتابة التدريجية للعنوان الرئيسي
-    const heroTitle = document.querySelector('.hero h1');
-    if (heroTitle && currentLanguage === 'ar') {
-        const text = heroTitle.getAttribute('data-ar');
-        let i = 0;
-        heroTitle.innerHTML = '';
-        function type() {
-            if (i < text.length) {
-                heroTitle.innerHTML += text.charAt(i);
-                i++;
-                setTimeout(type, 80);
-            }
-        }
-        type();
-    }
+    
 });
-//////////////////
+
 async function loadArticles() {
     try {
         const response = await fetch('articles.json');
