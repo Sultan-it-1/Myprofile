@@ -32,485 +32,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500&display=swap" rel="stylesheet">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <style id="sections-styles">
-/* CSS for section section:hero */
-.hero-container {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.hero-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  align-items: flex-start;
-}
-
-.hero-title {
-  font-size: 64px;
-  line-height: 1.1;
-  letter-spacing: -0.5px;
-}
-
-.hero-subtitle {
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-/* Typing Animation Styles */
-#typing-effect {
-  color: var(--text-color);
-  font-weight: 500;
-}
-
-.typed-cursor {
-  opacity: 1;
-  animation: typedjsBlink 0.7s infinite;
-  color: var(--text-color);
-}
-
-.typed-cursor.typed-cursor--blink {
-  animation: typedjsBlink 0.7s infinite;
-}
-
-@keyframes typedjsBlink {
-  50% { opacity: 0; }
-}
-
-.hero-image-wrapper {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.hero-image {
-  max-width: 100%;
-  height: auto;
-}
-
-@media (max-width: 992px) {
-  .hero-title {
-    font-size: 48px;
-  }
-  .hero-subtitle {
-    font-size: 18px;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero-container {
-    flex-direction: column;
-    text-align: center;
-  }
-  .hero-content {
-    align-items: center;
-  }
-  .hero-image-wrapper {
-    order: -1;
-  }
-  .hero-title {
-    font-size: 40px;
-  }
-}
-
-/* CSS for section section:about */
-.about-container {
-  display: flex;
-  align-items: center;
-  gap: 64px;
-}
-
-.about-image-wrapper {
-  flex: 0 0 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 40px;
-}
-
-.about-label {
-  background-color: var(--accent-color);
-  padding: 8px 16px;
-  border-radius: 100px;
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.about-image {
-  max-width: 200px;
-  height: auto;
-}
-
-.about-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-.about-title {
-  font-size: 36px;
-  line-height: 1.1;
-  letter-spacing: -0.5px;
-}
-
-.about-stats {
-  display: flex;
-  gap: 48px;
-}
-
-.stat-item {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.stat-number {
-  font-size: 24px;
-  line-height: 1.2;
-  letter-spacing: -1px;
-}
-
-.stat-label {
-  font-size: 16px;
-  line-height: 1.6;
-}
-
-@media (max-width: 992px) {
-  .about-container {
-    gap: 32px;
-  }
-  .about-image-wrapper {
-    flex: 0 0 250px;
-  }
-}
-
-@media (max-width: 768px) {
-  .about-container {
-    flex-direction: column;
-  }
-  .about-image-wrapper {
-    align-items: center;
-  }
-  .about-content {
-    text-align: center;
-    align-items: center;
-  }
-}
-
-/* CSS for section section:resume */
-.resume-container {
-  display: flex;
-  gap: 24px;
-}
-
-.resume-sidebar {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  align-items: flex-start;
-}
-
-.resume-label {
-  background-color: var(--accent-color);
-  padding: 8px 24px;
-  border-radius: 100px;
-  font-size: 15px;
-  font-weight: 600;
-}
-
-.resume-sidebar-title {
-  font-size: 36px;
-  line-height: 1.1;
-  letter-spacing: -0.5px;
-}
-
-.resume-sidebar-image {
-  max-width: 200px;
-  height: auto;
-  margin-top: auto;
-}
-
-.resume-main {
-  flex: 2.5;
-  display: flex;
-  flex-direction: column;
-  gap: 35px;
-}
-
-.resume-card {
-  background-color: rgba(255, 255, 255, 0);
-  border: 1px solid var(--text-color);
-  border-radius: 12px;
-  padding: 79px 32px 32px;
-  position: relative;
-  box-shadow: 0px 4px 4px 0px var(--shadow-color);
-}
-
-.resume-card-title {
-  position: absolute;
-  top: 0;
-  left: 32px;
-  transform: translateY(-50%);
-  background-color: var(--background-color);
-  padding: 8px 16px;
-  font-size: 24px;
-  font-weight: 600;
-  text-shadow: 5px 1px 4px var(--shadow-color);
-}
-
-.resume-list {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-.resume-item {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.resume-item-header {
-  display: flex;
-  align-items: center;
-  gap: 17px;
-}
-
-.resume-avatar {
-  width: 52px;
-  height: 52px;
-  background-color: var(--accent-color);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-  overflow: hidden;
-}
-
-.resume-avatar img, .merged-icon img {
-  max-width: 80%;
-  max-height: 80%;
-  object-fit: contain;
-}
-
-.merged-icon {
-  position: relative;
-  width: 32px;
-  height: 30px;
-}
-
-.resume-item-info {
-  flex-grow: 1;
-}
-
-.resume-item-title {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 1.6;
-}
-
-.resume-item-date {
-  font-size: 13px;
-  line-height: 1.6;
-}
-
-.resume-item-decor {
-  width: 25px;
-  height: 25px;
-}
-
-.resume-item-description {
-  font-size: 18px;
-  line-height: 1.6;
-  padding-left: 69px; /* avatar width (52px) + gap (17px) */
-}
-
-.resume-item-description ul {
-  padding-left: 20px;
-  list-style-type: disc;
-}
-
-.download-resume-wrapper {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-@media (max-width: 992px) {
-  .resume-container {
-    flex-direction: column;
-  }
-  .resume-sidebar {
-    align-items: center;
-    text-align: center;
-  }
-  .resume-sidebar-image {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .resume-item-header {
-    flex-wrap: wrap;
-  }
-  .resume-item-info {
-    width: calc(100% - 72px);
-  }
-  .resume-item-description {
-    padding-left: 0;
-  }
-  .resume-card {
-    padding: 24px;
-  }
-  .resume-card-title {
-    position: static;
-    transform: none;
-    text-shadow: none;
-    margin-bottom: 24px;
-    font-size: 20px;
-    padding: 0;
-    background-color: transparent;
-  }
-}
-
-/* CSS for section section:blog */
-.blog-container {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.blog-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  align-items: flex-start;
-}
-
-.blog-title {
-  font-size: 48px;
-  line-height: 1.1;
-  letter-spacing: -0.5px;
-}
-
-.blog-text {
-  font-size: 16px;
-  line-height: 1.6;
-  max-width: 380px;
-}
-
-.blog-image-wrapper {
-  flex: 1.2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.blog-image {
-  max-width: 100%;
-  height: auto;
-}
-
-@media (max-width: 992px) {
-  .blog-title {
-    font-size: 40px;
-  }
-}
-
-@media (max-width: 768px) {
-  .blog-container {
-    flex-direction: column-reverse;
-    text-align: center;
-  }
-  .blog-content {
-    align-items: center;
-  }
-}
-
-/* CSS for section section:footer */
-.footer-container {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.footer-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-  align-items: flex-start;
-}
-
-.footer-title {
-  font-size: 48px;
-  line-height: 1.1;
-  letter-spacing: -0.5px;
-}
-
-.footer-links {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.footer-links a {
-  transition: color 0.3s;
-}
-
-.footer-links a:hover {
-  color: #888;
-}
-
-.footer-image-wrapper {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer-image {
-  max-width: 100%;
-  height: auto;
-}
-
-.copyright {
-  text-align: center;
-  padding-top: 64px;
-  font-size: 14px;
-  color: #555;
-}
-
-@media (max-width: 992px) {
-  .footer-title {
-    font-size: 40px;
-  }
-}
-
-@media (max-width: 768px) {
-  .footer-container {
-    flex-direction: column;
-    text-align: center;
-  }
-  .footer-content {
-    align-items: center;
-  }
-}
-  </style>
-  <!-- Libraries -->
-  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <!-- Custom script (must be loaded after libraries) -->
-  <script src="script.js" defer></script>
 </head>
 <body>
 <header id="header" class="site-header">
@@ -555,7 +76,7 @@
   <div class="container about-container">
     <div class="about-image-wrapper" data-aos="fade-right">
       <div class="about-label">About me</div>
-      <img src="images/1_2038.svg" alt="Illustration of a person thinking" class="about-image">
+      <img src="images/1_2038.svg" alt="Illustration of a person thinking" class="about-image" loading="lazy" decoding="async">
     </div>
     <div class="about-content" data-aos="fade-left">
       <h2 class="about-title">A deep love for cloud & IT</h2>
@@ -575,7 +96,7 @@
     <aside class="resume-sidebar" data-aos="fade-right">
       <div class="resume-label">Resume</div>
       <h2 class="resume-sidebar-title">Discover My Story, Skills, and Passion – Get to Know Me!</h2>
-      <img src="images/14_412.svg" alt="Illustration of people collaborating" class="resume-sidebar-image">
+      <img src="images/14_412.svg" alt="Illustration of people collaborating" class="resume-sidebar-image" loading="lazy" decoding="async">
     </aside>
     <main class="resume-main">
       <div class="resume-card" data-aos="fade-up">
@@ -584,13 +105,13 @@
           <li class="resume-item">
             <div class="resume-item-header">
               <div class="resume-avatar">
-                <img src="images/14_1327.svg" alt="Company icon">
+                <img src="images/14_1327.svg" alt="Company icon" loading="lazy" decoding="async">
               </div>
               <div class="resume-item-info">
                 <p class="resume-item-title">IT Support Intern, King Abdulaziz University Hospital</p>
                 <p class="resume-item-date">Jun 2023 - Aug 2023</p>
               </div>
-              <img src="images/29_142.svg" alt="decoration" class="resume-item-decor">
+              <img src="images/29_142.svg" alt="decoration" class="resume-item-decor" loading="lazy" decoding="async">
             </div>
             <p class="resume-item-description">Provided technical support to hospital staff, diagnosing and resolving hardware and software issues, ensuring seamless IT operations. Assisted in deploying and configuring new medical software applications while ensuring compliance with hospital IT policies. Collaborated with the IT team to monitor and maintain the network infrastructure, helping reduce downtime and enhance performance</p>
           </li>
@@ -603,26 +124,26 @@
           <li class="resume-item">
             <div class="resume-item-header">
               <div class="resume-avatar">
-                <img src="images/29_133.svg" alt="University icon">
+                <img src="images/29_133.svg" alt="University icon" loading="lazy" decoding="async">
               </div>
               <div class="resume-item-info">
                 <p class="resume-item-title">Bachelor of Science in Information Technology, King Abdulaziz University</p>
                 <p class="resume-item-date">Jan 2020 - Aug 2024</p>
               </div>
-              <img src="images/29_126.svg" alt="decoration" class="resume-item-decor">
+              <img src="images/29_126.svg" alt="decoration" class="resume-item-decor" loading="lazy" decoding="async">
             </div>
             <p class="resume-item-description">Relevant coursework: Network Security, Systems Administration, Database Management, Software Engineering</p>
           </li>
           <li class="resume-item">
             <div class="resume-item-header">
               <div class="resume-avatar">
-                <img src="images/29_137.svg" alt="Foundation icon">
+                <img src="images/29_137.svg" alt="Foundation icon" loading="lazy" decoding="async">
               </div>
               <div class="resume-item-info">
                 <p class="resume-item-title">Mawhiba Program Scholar, King Abdulaziz and his Companions Foundation for Giftedness and Creativity</p>
                 <p class="resume-item-date">2014 - 2018</p>
               </div>
-              <img src="images/14_1442.svg" alt="decoration" class="resume-item-decor">
+              <img src="images/14_1442.svg" alt="decoration" class="resume-item-decor" loading="lazy" decoding="async">
             </div>
             <p class="resume-item-description">Selected for a prestigious program for gifted students, receiving advanced academic training.</p>
           </li>
@@ -637,18 +158,18 @@
               <div class="resume-avatar">
                 <!--merged image-->
                 <div class="merged-icon">
-                  <img src="images/32_163.svg" alt="skill icon part" style="position:absolute; left:11.37px; top:4.04px;">
-                  <img src="images/32_165.svg" alt="skill icon part" style="position:absolute; left:11.37px; top:13.07px;">
-                  <img src="images/32_167.svg" alt="skill icon part" style="position:absolute; left:11.37px; top:22.09px;">
-                  <img src="images/32_169.svg" alt="skill icon part" style="position:absolute; left:0.00px; top:11.57px;">
-                  <img src="images/32_171.svg" alt="skill icon part" style="position:absolute; left:0.00px; top:2.54px;">
-                  <img src="images/32_173.svg" alt="skill icon part" style="position:absolute; left:0.00px; top:20.59px;">
+                  <img src="images/32_163.svg" alt="skill icon part" style="position:absolute; left:11.37px; top:4.04px;" loading="lazy" decoding="async">
+                  <img src="images/32_165.svg" alt="skill icon part" style="position:absolute; left:11.37px; top:13.07px;" loading="lazy" decoding="async">
+                  <img src="images/32_167.svg" alt="skill icon part" style="position:absolute; left:11.37px; top:22.09px;" loading="lazy" decoding="async">
+                  <img src="images/32_169.svg" alt="skill icon part" style="position:absolute; left:0.00px; top:11.57px;" loading="lazy" decoding="async">
+                  <img src="images/32_171.svg" alt="skill icon part" style="position:absolute; left:0.00px; top:2.54px;" loading="lazy" decoding="async">
+                  <img src="images/32_173.svg" alt="skill icon part" style="position:absolute; left:0.00px; top:20.59px;" loading="lazy" decoding="async">
                 </div>
               </div>
               <div class="resume-item-info">
                 <p class="resume-item-title">Technical Skills</p>
               </div>
-              <img src="images/14_1477.svg" alt="decoration" class="resume-item-decor">
+              <img src="images/14_1477.svg" alt="decoration" class="resume-item-decor" loading="lazy" decoding="async">
             </div>
             <div class="resume-item-description">
               <ul>
@@ -665,18 +186,18 @@
               <div class="resume-avatar">
                 <!--merged image-->
                 <div class="merged-icon">
-                  <img src="images/32_179.svg" alt="skill icon part" style="position:absolute; left:11.37px; top:4.04px;">
-                  <img src="images/32_181.svg" alt="skill icon part" style="position:absolute; left:11.37px; top:13.07px;">
-                  <img src="images/32_183.svg" alt="skill icon part" style="position:absolute; left:11.37px; top:22.09px;">
-                  <img src="images/32_185.svg" alt="skill icon part" style="position:absolute; left:0.00px; top:11.57px;">
-                  <img src="images/32_187.svg" alt="skill icon part" style="position:absolute; left:0.00px; top:2.54px;">
-                  <img src="images/32_189.svg" alt="skill icon part" style="position:absolute; left:0.00px; top:20.59px;">
+                  <img src="images/32_179.svg" alt="skill icon part" style="position:absolute; left:11.37px; top:4.04px;" loading="lazy" decoding="async">
+                  <img src="images/32_181.svg" alt="skill icon part" style="position:absolute; left:11.37px; top:13.07px;" loading="lazy" decoding="async">
+                  <img src="images/32_183.svg" alt="skill icon part" style="position:absolute; left:11.37px; top:22.09px;" loading="lazy" decoding="async">
+                  <img src="images/32_185.svg" alt="skill icon part" style="position:absolute; left:0.00px; top:11.57px;" loading="lazy" decoding="async">
+                  <img src="images/32_187.svg" alt="skill icon part" style="position:absolute; left:0.00px; top:2.54px;" loading="lazy" decoding="async">
+                  <img src="images/32_189.svg" alt="skill icon part" style="position:absolute; left:0.00px; top:20.59px;" loading="lazy" decoding="async">
                 </div>
               </div>
               <div class="resume-item-info">
                 <p class="resume-item-title">Soft Skills</p>
               </div>
-              <img src="images/14_1507.svg" alt="decoration" class="resume-item-decor">
+              <img src="images/14_1507.svg" alt="decoration" class="resume-item-decor" loading="lazy" decoding="async">
             </div>
             <div class="resume-item-description">
                 <ul>
@@ -696,26 +217,26 @@
           <li class="resume-item">
             <div class="resume-item-header">
               <div class="resume-avatar">
-                <img src="images/32_195.svg" alt="Certificate icon">
+                <img src="images/32_195.svg" alt="Certificate icon" loading="lazy" decoding="async">
               </div>
               <div class="resume-item-info">
                 <p class="resume-item-title">AWS Certified Cloud Practitioner</p>
                 <p class="resume-item-date">Jan 2025 - Jun 2028</p>
               </div>
-              <img src="images/14_497.svg" alt="decoration" class="resume-item-decor">
+              <img src="images/14_497.svg" alt="decoration" class="resume-item-decor" loading="lazy" decoding="async">
             </div>
             <p class="resume-item-description">Amazon Web Services — Core AWS services and foundational cloud concepts.</p>
           </li>
           <li class="resume-item">
             <div class="resume-item-header">
               <div class="resume-avatar">
-                <img src="images/32_200.svg" alt="Certificate icon">
+                <img src="images/32_200.svg" alt="Certificate icon" loading="lazy" decoding="async">
               </div>
               <div class="resume-item-info">
                 <p class="resume-item-title">Introduction to Cybersecurity</p>
                 <p class="resume-item-date">Jun 2021</p>
               </div>
-              <img src="images/14_1314.svg" alt="decoration" class="resume-item-decor">
+              <img src="images/14_1314.svg" alt="decoration" class="resume-item-decor" loading="lazy" decoding="async">
             </div>
             <p class="resume-item-description">Ministry of Communications and Information Technology — Cybersecurity fundamentals course.</p>
           </li>
@@ -728,13 +249,13 @@
           <li class="resume-item">
             <div class="resume-item-header">
               <div class="resume-avatar">
-                <img src="images/32_210.svg" alt="Community icon">
+                <img src="images/32_210.svg" alt="Community icon" loading="lazy" decoding="async">
               </div>
               <div class="resume-item-info">
                 <p class="resume-item-title">Member, Saudi Council of Engineers (SCE)</p>
                 <p class="resume-item-date">Sep 2024- Sep 2025</p>
               </div>
-              <img src="images/17_26.svg" alt="decoration" class="resume-item-decor">
+              <img src="images/17_26.svg" alt="decoration" class="resume-item-decor" loading="lazy" decoding="async">
             </div>
             <p class="resume-item-description">Professional registration in Information Technology specialization.</p>
           </li>
@@ -742,7 +263,7 @@
       </div>
       <div class="download-resume-wrapper">
         <a href="CV.pdf" class="btn" download>
-          <img src="images/37_316.svg" alt="Download icon">
+          <img src="images/37_316.svg" alt="Download icon" loading="lazy" decoding="async">
           <span>Download Resume</span>
         </a>
       </div>
@@ -761,7 +282,7 @@
       </a>
     </div>
     <div class="blog-image-wrapper" data-aos="fade-left">
-      <img src="images/43_570.svg" alt="Illustration about discovery" class="blog-image">
+      <img src="images/43_570.svg" alt="Illustration about discovery" class="blog-image" loading="lazy" decoding="async">
     </div>
   </div>
 </section>
@@ -774,23 +295,26 @@
         <img src="images/1_2493.svg" alt="Email icon">
         <span>Contact Me</span>
       </a>
-      <div class="footer-links">
-        <a href="mailto:sultan.ayidh.it@gmail.com">Email</a>
-        <span>/</span>
-        <a href="https://www.linkedin.com/in/sultan-ayidh-it-tech" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <span>/</span>
-        <a href="https://wa.me/966566178680" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-      </div>
+      <ul class="footer-links">
+        <li><a href="mailto:sultan.ayidh.it@gmail.com">Email</a></li>
+        <li><a href="https://www.linkedin.com/in/sultan-ayidh-it-tech" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+        <li><a href="https://wa.me/966566178680" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+      </ul>
     </div>
     <div class="footer-image-wrapper" data-aos="fade-left">
-      <img src="images/1_2531.svg" alt="Illustration of a person on the phone" class="footer-image">
+      <img src="images/1_2531.svg" alt="Illustration of a person on the phone" class="footer-image" loading="lazy" decoding="async">
     </div>
   </div>
   <div class="copyright">
     <p>&copy; 2024 Sultan Ayidh. All rights reserved.</p>
   </div>
 </footer>
-     <script type="module" src="fff.js"></script>
+    <!-- Libraries -->
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <!-- Custom script (must be loaded after libraries) -->
+    <script src="script.js" defer></script>
+    <!-- The purpose of fff.js is unclear, but it's kept here -->
+    <script type="module" src="fff.js"></script>
 </body>
 </html>
-
