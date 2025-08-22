@@ -95,6 +95,9 @@
   .hero-title {
     font-size: 48px;
   }
+  .hero-subtitle {
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -107,6 +110,9 @@
   }
   .hero-image-wrapper {
     order: -1;
+  }
+  .hero-title {
+    font-size: 40px;
   }
 }
 
@@ -322,7 +328,12 @@
 .resume-item-description {
   font-size: 18px;
   line-height: 1.6;
-  padding-left: 72px; /* avatar width + gap */
+  padding-left: 69px; /* avatar width (52px) + gap (17px) */
+}
+
+.resume-item-description ul {
+  padding-left: 20px;
+  list-style-type: disc;
 }
 
 .download-resume-wrapper {
@@ -353,6 +364,18 @@
   }
   .resume-item-description {
     padding-left: 0;
+  }
+  .resume-card {
+    padding: 24px;
+  }
+  .resume-card-title {
+    position: static;
+    transform: none;
+    text-shadow: none;
+    margin-bottom: 24px;
+    font-size: 20px;
+    padding: 0;
+    background-color: transparent;
   }
 }
 
