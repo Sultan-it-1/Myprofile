@@ -1,243 +1,753 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sultan Ayidh - Personal Website</title>
 
-    <!-- Favicon -->
-    <link rel="icon" href="me.jpg" type="image/jpeg">
+<!-- Favicon -->
+<link rel="icon" href="images/1_1893.svg" type="image/svg+xml">
 
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="الموقع الرسمي لـ Sultan Ayidh - خبير في تكنولوجيا المعلومات، الأمن السيبراني، وتطوير الأنظمة والمواقع. تصفح السيرة الذاتية، المشاريع، المدونة، وتواصل مباشرة.">
-    <meta name="keywords" content="Sultan Ayidh, سلطان عايض, IT Specialist, Cybersecurity, Web Developer, Resume, Portfolio, Blog, Contact, سيرة ذاتية, معرض أعمال, تواصل, أمن المعلومات, تطوير مواقع, خبير تقنية معلومات">
-    <meta name="author" content="Sultan Ayidh">
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#0f172a">
-    <meta name="language" content="Arabic">
+<!-- SEO Meta Tags -->
+<meta name="description" content="The personal portfolio website for Sultan Ayidh, an IT graduate passionate about network security, system administration, and cloud computing.">
+<meta name="keywords" content="Sultan Ayidh, IT, Information Technology, Portfolio, Resume, Cloud Computing, Network Security, System Administration">
+<meta name="author" content="Sultan Ayidh">
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Sultan Ayidh - IT Specialist">
-    <meta name="twitter:description" content="خبير تكنولوجيا معلومات وأمن سيبراني. اعرض السيرة الذاتية، المشاريع، وتواصل معي مباشرة.">
-    <meta name="twitter:image" content="https://sultanayidh.site/me.jpg">
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://sultanayidh.site/"> <!-- Replace with your actual domain -->
+<meta property="og:title" content="Sultan Ayidh - Personal Website">
+<meta property="og:description" content="The personal portfolio website for Sultan Ayidh, an IT graduate passionate about network security, system administration, and cloud computing.">
+<meta property="og:image" content="images/1_1963.svg"> <!-- A good image for social sharing -->
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Sultan Ayidh - IT Specialist | سلطان عايض - متخصص تكنولوجيا المعلومات">
-    <meta property="og:description" content="الموقع الرسمي لـ Sultan Ayidh، متخصص في تكنولوجيا المعلومات، الأمن السيبراني، وتطوير المواقع.">
-    <meta property="og:image" content="https://sultanayidh.site/me.jpg">
-    <meta property="og:url" content="https://sultanayidh.site/">
-    <meta property="og:site_name" content="Sultan Ayidh Portfolio">
+<!-- Twitter Card -->
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:url" content="https://sultanayidh.site/"> <!-- Replace with your actual domain -->
+<meta property="twitter:title" content="Sultan Ayidh - Personal Website">
+<meta property="twitter:description" content="The personal portfolio website for Sultan Ayidh, an IT graduate passionate about network security, system administration, and cloud computing.">
+<meta property="twitter:image" content="images/1_1963.svg"> <!-- A good image for social sharing -->
 
-    <title>Sultan Ayidh</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style id="sections-styles">
+/* CSS for section section:hero */
+.hero-container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+.hero-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+}
 
-    <!-- AOS CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+.hero-title {
+  font-size: 64px;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+.hero-subtitle {
+  font-size: 16px;
+  line-height: 1.6;
+}
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+.hero-image-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-image {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-content {
+    align-items: center;
+  }
+  .hero-image-wrapper {
+    order: -1;
+  }
+}
+
+/* CSS for section section:about */
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 64px;
+}
+
+.about-image-wrapper {
+  flex: 0 0 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.about-label {
+  background-color: var(--accent-color);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.about-image {
+  max-width: 200px;
+  height: auto;
+}
+
+.about-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.about-title {
+  font-size: 36px;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.about-stats {
+  display: flex;
+  gap: 48px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-number {
+  font-size: 24px;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+
+.stat-label {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+@media (max-width: 992px) {
+  .about-container {
+    gap: 32px;
+  }
+  .about-image-wrapper {
+    flex: 0 0 250px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    flex-direction: column;
+  }
+  .about-image-wrapper {
+    align-items: center;
+  }
+  .about-content {
+    text-align: center;
+    align-items: center;
+  }
+}
+
+/* CSS for section section:resume */
+.resume-container {
+  display: flex;
+  gap: 24px;
+}
+
+.resume-sidebar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.resume-label {
+  background-color: var(--accent-color);
+  padding: 8px 24px;
+  border-radius: 100px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.resume-sidebar-title {
+  font-size: 36px;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.resume-sidebar-image {
+  max-width: 200px;
+  height: auto;
+  margin-top: auto;
+}
+
+.resume-main {
+  flex: 2.5;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.resume-card {
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid var(--text-color);
+  border-radius: 12px;
+  padding: 79px 32px 32px;
+  position: relative;
+  box-shadow: 0px 4px 4px 0px var(--shadow-color);
+}
+
+.resume-card-title {
+  position: absolute;
+  top: 0;
+  left: 32px;
+  transform: translateY(-50%);
+  background-color: var(--background-color);
+  padding: 8px 16px;
+  font-size: 24px;
+  font-weight: 600;
+  text-shadow: 5px 1px 4px var(--shadow-color);
+}
+
+.resume-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.resume-item {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.resume-item-header {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.resume-avatar {
+  width: 52px;
+  height: 52px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.resume-avatar img, .merged-icon img {
+  max-width: 80%;
+  max-height: 80%;
+  object-fit: contain;
+}
+
+.merged-icon {
+  position: relative;
+  width: 32px;
+  height: 30px;
+}
+
+.resume-item-info {
+  flex-grow: 1;
+}
+
+.resume-item-title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.resume-item-date {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.resume-item-decor {
+  width: 25px;
+  height: 25px;
+}
+
+.resume-item-description {
+  font-size: 18px;
+  line-height: 1.6;
+  padding-left: 72px; /* avatar width + gap */
+}
+
+.download-resume-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 992px) {
+  .resume-container {
+    flex-direction: column;
+  }
+  .resume-sidebar {
+    align-items: center;
+    text-align: center;
+  }
+  .resume-sidebar-image {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .resume-item-header {
+    flex-wrap: wrap;
+  }
+  .resume-item-info {
+    width: calc(100% - 72px);
+  }
+  .resume-item-description {
+    padding-left: 0;
+  }
+}
+
+/* CSS for section section:blog */
+.blog-container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.blog-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.blog-title {
+  font-size: 48px;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.blog-text {
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 380px;
+}
+
+.blog-image-wrapper {
+  flex: 1.2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blog-image {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 992px) {
+  .blog-title {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-container {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+  .blog-content {
+    align-items: center;
+  }
+}
+
+/* CSS for section section:footer */
+.footer-container {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.footer-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.footer-title {
+  font-size: 48px;
+  line-height: 1.1;
+  letter-spacing: -0.5px;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.footer-links a {
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: #888;
+}
+
+.footer-image-wrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-image {
+  max-width: 100%;
+  height: auto;
+}
+
+.copyright {
+  text-align: center;
+  padding-top: 64px;
+  font-size: 14px;
+  color: #555;
+}
+
+@media (max-width: 992px) {
+  .footer-title {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .footer-content {
+    align-items: center;
+  }
+}
+  </style>
+  <!-- Libraries -->
+  <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <!-- Custom script (must be loaded after libraries) -->
+  <script src="script.js" defer></script>
 </head>
-
-<body data-theme="light"> <!-- Default theme -->
-
-    <nav class="navbar glassmorphism">
-        <div class="container">
-            <a href="#home" class="nav-logo"><span lang="ar">سلطان عايض</span><span lang="en" style="display:none;">Sultan Ayidh</span></a>
-            <ul class="nav-menu" id="main-nav-menu">
-                <li><a href="#home" class="nav-link"><span lang="ar">الرئيسية</span><span lang="en" style="display:none;">Home</span></a></li>
-                <li><a href="#about" class="nav-link"><span lang="ar">عني</span><span lang="en" style="display:none;">About</span></a></li>
-                <li><a href="#resume" class="nav-link"><span lang="ar">السيرة الذاتية</span><span lang="en" style="display:none;">Resume</span></a></li>
-                <li><a href="#blog" class="nav-link"><span lang="ar">المدونة</span><span lang="en" style="display:none;">Blog</span></a></li>
-                <li><a href="#contact" class="nav-link"><span lang="ar">اتصل بي</span><span lang="en" style="display:none;">Contact</span></a></li>
-            </ul>
-            <div class="nav-toggles">
-                <button id="menu-toggle" aria-label="Toggle Menu" class="menu-toggle"><i class="fas fa-bars"></i></button>
-                <button id="theme-toggle" aria-label="Toggle Dark Mode"><i class="fas fa-moon"></i></button>
-                <button id="lang-toggle" aria-label="Toggle Language"><span lang="ar">ع</span><span lang="en" style="display:none;">EN</span></button>
-            </div>
-        </div>
+<body>
+<header id="header" class="site-header">
+  <div class="container header-container">
+    <a href="index.html" class="logo">
+      <img src="images/1_1893.svg" alt="Logo Mark" class="logo-img">
+      <span class="logo-text">Sultan Ayidh</span>
+    </a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
     </nav>
-
-    <!-- Home Section (Landing Page) -->
-    <header id="home" class="hero">
-        <div class="container hero-content" data-aos="fade-in">
-            <!-- Profile picture -->
-             <img src="me.jpg" alt="Sultan Ayidh Profile Picture" class="profile-pic" data-aos="fade-down">
-            <h1 data-aos="fade-up">
-                <span lang="ar">مرحباً بك في <span class="highlight">موقعي الشخصي</span></span>
-                <span lang="en" style="display:none;">Welcome to My <span class="highlight">Personal Website</span></span>
-            </h1>
-            <h2 data-aos="fade-up" data-aos-delay="100">
-                <span lang="ar">أنا سلطان عايض، <span class="type-effect-ar"></span></span>
-                <span lang="en" style="display:none;">I'm Sultan Ayidh, <span class="type-effect-en"></span></span>
-            </h2>
-            <p data-aos="fade-up" data-aos-delay="200"><span lang="ar">هنا يمكنك التعرف علي أكثر، استعراض سيرتي الذاتية وأعمالي.</span><span lang="en" style="display:none;">Here you can learn more about me, view my resume and portfolio.</span></p>
-            <a href="#about" class="cta-button" data-aos="fade-up" data-aos-delay="300"><span lang="ar">اكتشف المزيد عني</span><span lang="en" style="display:none;">Discover More About Me</span></a>
-        </div>
-    </header>
-
-    <!-- About Section (Profile) -->
-    <section id="about" class="section">
-        <div class="container" data-aos="fade-right">
-            <h3 class="section-title"><span lang="ar">نبذة عني</span><span lang="en" style="display:none;">About Me</span></h3>
-            <p><span lang="ar">خريج تقنية معلومات متحمس بدرجة البكالوريوس من جامعة الملك عبد العزيز. شغوف بأمن الشبكات وإدارة الأنظمة والحوسبة السحابية. حريص على الاستفادة من المعرفة الأكاديمية وخبرة التدريب ومهارات حل المشكلات في دور أخصائي دعم تكنولوجيا المعلومات. بارع في العمل في بيئات سريعة الخطى والتكيف بسرعة مع التقنيات الجديدة.</span><span lang="en" style="display:none;">A highly motivated IT graduate with a Bachelor's degree in Information Technology from King Abdulaziz University. Passionate about network security, system administration, and cloud computing. Eager to leverage academic knowledge, internship experience, and problem-solving skills in an IT Support Specialist role. Adept at working in fast-paced environments and quickly adapting to new technologies.</span></p>
-        </div>
-    </section>
-
-    <!-- Resume Section -->
-    <section id="resume" class="section bg-light">
-        <div class="container">
-            <h3 class="section-title" data-aos="fade-left"><span lang="ar">السيرة الذاتية والخبرات</span><span lang="en" style="display:none;">Resume & Experience</span></h3>
-
-            <article data-aos="fade-up">
-                <h4><span lang="ar">متدرب دعم تكنولوجيا المعلومات، مستشفى جامعة الملك عبد العزيز</span><span lang="en" style="display:none;">IT Support Intern, King Abdulaziz University Hospital</span></h4>
-                <p><em><span lang="ar">يونيو 2023 - أغسطس 2023</span><span lang="en" style="display:none;">Jun 2023 - Aug 2023</span></em></p>
-                <ul>
-                    <li><span lang="ar">قدمت الدعم الفني لموظفي المستشفى، مع تشخيص وحل مشكلات الأجهزة والبرامج، مما يضمن عمليات تكنولوجيا المعلومات السلسة.</span><span lang="en" style="display:none;">Provided technical support to hospital staff, diagnosing and resolving hardware and software issues, ensuring seamless IT operations.</span></li>
-                    <li><span lang="ar">ساعدت في نشر وتكوين تطبيقات برمجية طبية جديدة مع ضمان الامتثال لسياسات تكنولوجيا المعلومات بالمستشفى.</span><span lang="en" style="display:none;">Assisted in deploying and configuring new medical software applications while ensuring compliance with hospital IT policies.</span></li>
-                    <li><span lang="ar">تعاونت مع فريق تكنولوجيا المعلومات لمراقبة وصيانة البنية التحتية للشبكة، مما ساعد على تقليل وقت التوقف عن العمل وتعزيز الأداء.</span><span lang="en" style="display:none;">Collaborated with the IT team to monitor and maintain the network infrastructure, helping reduce downtime and enhance performance.</span></li>
-                </ul>
-            </article>
-
-             <article data-aos="fade-up">
-                <h4><span lang="ar">بكالوريوس العلوم في تكنولوجيا المعلومات، جامعة الملك عبد العزيز</span><span lang="en" style="display:none;">Bachelor of Science in Information Technology, King Abdulaziz University</span></h4>
-                <p><em><span lang="ar">يناير 2020 - أغسطس 2024</span><span lang="en" style="display:none;">Jan 2020 - Aug 2024</span></em></p>
-                <ul>
-                    <li><span lang="ar">الدورات الدراسية ذات الصلة: أمن الشبكات، إدارة الأنظمة، إدارة قواعد البيانات، هندسة البرمجيات</span><span lang="en" style="display:none;">Relevant coursework: Network Security, Systems Administration, Database Management, Software Engineering</span></li>
-                </ul>
-            </article>
-
-             <article data-aos="fade-up">
-                 <h4><span lang="ar">باحث برنامج موهبة، مؤسسة الملك عبد العزيز ورجاله للموهبة والإبداع</span><span lang="en" style="display:none;">Mawhiba Program Scholar, King Abdulaziz and his Companions Foundation for Giftedness and Creativity</span></h4>
-                 <p><em><span lang="ar">2014 - 2018</span><span lang="en" style="display:none;">2014 - 2018</span></em></p>
-                 <ul>
-                     <li><span lang="ar">تم اختياري لبرنامج موهبة المرموق، وتلقيت تدريبًا أكاديميًا متقدمًا وشاركت في فرص حصرية للطلاب الموهوبين في المملكة العربية السعودية.</span><span lang="en" style="display:none;">Selected for the prestigious Mawhiba program, receiving advanced academic training and participating in exclusive opportunities for gifted students in Saudi Arabia.</span></li>
-                 </ul>
-             </article>
-
-             <div class="skills-section" data-aos="fade-up">
-                 <h4><span lang="ar">المهارات التقنية</span><span lang="en" style="display:none;">Technical Skills</span></h4>
-                 <ul>
-                     <li><span lang="ar">أنظمة التشغيل: ويندوز، ماك أو إس، لينكس.</span><span lang="en" style="display:none;">Operating Systems: Windows, macOS, Linux.</span></li>
-                     <li><span lang="ar">الشبكات: TCP/IP, DNS, DHCP, VPN.</span><span lang="en" style="display:none;">Networking: TCP/IP, DNS, DHCP, VPN.</span></li>
-                     <li><span lang="ar">البرامج: مجموعة مايكروسوفت أوفيس، أدوات سطح المكتب البعيد.</span><span lang="en" style="display:none;">Software: Microsoft Office Suite, Remote Desktop Tools.</span></li>
-                     <li><span lang="ar">البرمجة: بايثون، HTML/CSS، جافاسكريبت.</span><span lang="en" style="display:none;">Programming: Python, HTML/CSS, JavaScript.</span></li>
-                     <li><span lang="ar">المنصات السحابية: مايكروسوفت Azure.</span><span lang="en" style="display:none;">Cloud Platforms: Microsoft Azure.</span></li>
-                 </ul>
-             </div>
-
-             <div class="certificates-section" data-aos="fade-up">
-                <h4><span lang="ar">الشهادات</span><span lang="en" style="display:none;">Certificates</span></h4>
-                 <article>
-    <h5><span lang="ar">Cloud Practitioner – AWS | يونيو 2025</span><span lang="en" style="display:none;">Cloud Practitioner – AWS | June 2025</span></h5>
-    <p>
-        <span lang="ar">صادرة عن Amazon Web Services – مفاهيم أساسية في الحوسبة السحابية وخدمات AWS الأساسية.</span>
-        <span lang="en" style="display:none;">Issued by Amazon Web Services – Fundamental cloud computing concepts and AWS core services.</span>
-    </p>
-                 </article>
-                 <article>
-                    <h5><span lang="ar">مقدمة في الأمن السيبراني | 2021</span><span lang="en" style="display:none;">Introduction to Cybersecurity | 2021</span></h5>
-                     <p><span lang="ar">صادرة عن وزارة الاتصالات وتقنية المعلومات</span><span lang="en" style="display:none;">Issued by the Ministry of Communications and Information Technology</span></p>
-                 </article>
-             </div>
-
-             <div class="memberships-section" data-aos="fade-up">
-                 <h4><span lang="ar">العضويات المهنية</span><span lang="en" style="display:none;">Professional Memberships</span></h4>
-                 <article>
-                     <h5><span lang="ar">عضو، الهيئة السعودية للمهندسين (SCE)</span><span lang="en" style="display:none;">Member, Saudi Council of Engineers (SCE)</span></h5>
-                     <ul>
-                        <li><span lang="ar">التخصص: تقنية المعلومات</span><span lang="en" style="display:none;">Specialization: Information Technology</span></li>
-                        <li><span lang="ar">صالح من سبتمبر 2024 - سبتمبر 2025</span><span lang="en" style="display:none;">Valid from September 2024 – September 2025</span></li>
-                     </ul>
-                 </article>
-            </div>
-
-            <div class="resume-download" data-aos="fade-up">
-                <a href="CV.pdf" download class="cta-button"><i class="fas fa-download"></i> <span lang="ar">تحميل السيرة الذاتية (PDF)</span><span lang="en" style="display:none;">Download Resume (PDF)</span></a>
-            </div>
-        </div>
-    </section>
-
-  
-
-    <!-- Blog Section (Placeholder) -->
-    <section id="blog" class="section bg-light">
-        <div class="container">
-            <h3 class="section-title" data-aos="zoom-in"><span lang="ar">المدونة</span><span lang="en" style="display:none;">Blog</span></h3>
- <a href="/Blog" class="blog-card">
-    <div class="card-content">
-        <span class="emoji">📝</span>
-        <h3>
-            <span lang="ar">زيارة المدونة</span>
-            <span lang="en" style="display: none;">Visit the Blog</span>
-        </h3>
-        <p>
-            <span lang="ar">تعرف على مقالاتي التقنية وأحدث المواضيع في عالم البرمجة والتقنية.</span>
-            <span lang="en" style="display: none;">Explore my tech articles and the latest in programming and technology.</span>
-        </p>
+    <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+<section id="hero">
+  <div class="container hero-container">
+    <div class="hero-content" data-aos="fade-right">
+      <h1 class="hero-title">Welcome to My Personal Website</h1>
+      <p class="hero-subtitle">I'm Sultan Ayidh, <span id="typing-effect"></span></p>
+      <a href="contact.html" class="btn">
+        <img src="images/1_1947.svg" alt="Email icon">
+        <span>Contact Me</span>
+      </a>
     </div>
-</a>
-
-             <!-- Placeholder for blog posts -->
-            <div class="blog-posts" data-aos="fade-up">
-                 <!-- Example Post -->
-                 <!-- <article class="blog-post"><h4>Blog Post Title</h4><p>Excerpt...</p><a href="#">Read More</a></article> -->
+    <div class="hero-image-wrapper" data-aos="fade-left">
+      <img src="images/1_1963.svg" alt="Astronaut illustration" class="hero-image">
+    </div>
+  </div>
+</section>
+<hr class="section-divider">
+<section id="about">
+  <div class="container about-container">
+    <div class="about-image-wrapper" data-aos="fade-right">
+      <div class="about-label">About me</div>
+      <img src="images/1_2038.svg" alt="Illustration of a person thinking" class="about-image">
+    </div>
+    <div class="about-content" data-aos="fade-left">
+      <h2 class="about-title">A deep love for cloud & IT</h2>
+      <p class="about-text">A highly motivated IT graduate with a Bachelor's degree in Information Technology from King Abdulaziz University. Passionate about network security, system administration, and cloud computing. Eager to leverage academic knowledge, internship experience, and problem-solving skills in an IT Support Specialist role. Adept at working in fast-paced environments and quickly adapting to new technologies.</p>
+      <div class="about-stats">
+        <div class="stat-item">
+          <h3 class="stat-number">IT support</h3>
+          <p class="stat-label">Experiences</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<hr class="section-divider">
+<section id="resume">
+  <div class="container resume-container">
+    <aside class="resume-sidebar" data-aos="fade-right">
+      <div class="resume-label">Resume</div>
+      <h2 class="resume-sidebar-title">Discover My Story, Skills, and Passion – Get to Know Me!</h2>
+      <img src="images/14_412.svg" alt="Illustration of people collaborating" class="resume-sidebar-image">
+    </aside>
+    <main class="resume-main">
+      <div class="resume-card" data-aos="fade-up">
+        <h3 class="resume-card-title">Experience</h3>
+        <ul class="resume-list">
+          <li class="resume-item">
+            <div class="resume-item-header">
+              <div class="resume-avatar">
+                <img src="images/14_1327.svg" alt="Company icon">
+              </div>
+              <div class="resume-item-info">
+                <p class="resume-item-title">IT Support Intern, King Abdulaziz University Hospital</p>
+                <p class="resume-item-date">Jun 2023 - Aug 2023</p>
+              </div>
+              <img src="images/29_142.svg" alt="decoration" class="resume-item-decor">
             </div>
-        </div>
-    </section>
+            <p class="resume-item-description">Provided technical support to hospital staff, diagnosing and resolving hardware and software issues, ensuring seamless IT operations. Assisted in deploying and configuring new medical software applications while ensuring compliance with hospital IT policies. Collaborated with the IT team to monitor and maintain the network infrastructure, helping reduce downtime and enhance performance</p>
+          </li>
+        </ul>
+      </div>
 
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <div class="container">
-            <h3 class="section-title" data-aos="fade-down"><span lang="ar">تواصل معي</span><span lang="en" style="display:none;">Contact Me</span></h3>
-            <div class="contact-content">
-                 <div class="contact-info" data-aos="fade-right">
-                     <p><i class="fas fa-envelope"></i> <a href="mailto:sultan.ayidh.it@gmail.com">sultan.ayidh.it@gmail.com</a></p>
-                     <p><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/sultan-ayidh-it-tech" target="_blank">linkedin.com/in/sultan-ayidh-it-tech</a></p>
-                     <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/966566178680" target="_blank"><span lang="ar">تواصل عبر واتساب</span><span lang="en" style="display:none;">Contact via WhatsApp</span></a></p>
-                 </div>
-                 <form id="contact-form" class="contact-form" action="https://formspree.io/f/manoyzov" method="POST" data-aos="fade-left">
-                    <div class="form-group">
-                        <label for="name"><span lang="ar">الاسم</span><span lang="en" style="display:none;">Name</span></label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email"><span lang="ar">البريد الإلكتروني</span><span lang="en" style="display:none;">Email</span></label>
-                        <input type="email" id="email" name="_replyto" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message"><span lang="ar">الرسالة</span><span lang="en" style="display:none;">Message</span></label>
-                        <textarea id="message" name="message" rows="4" required></textarea>
-                    </div>
-                    <button type="submit" class="cta-button"><span lang="ar">إرسال الرسالة</span><span lang="en" style="display:none;">Send Message</span></button>
-                </form>
+      <div class="resume-card" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="resume-card-title">Education</h3>
+        <ul class="resume-list">
+          <li class="resume-item">
+            <div class="resume-item-header">
+              <div class="resume-avatar">
+                <img src="images/29_133.svg" alt="University icon">
+              </div>
+              <div class="resume-item-info">
+                <p class="resume-item-title">Bachelor of Science in Information Technology, King Abdulaziz University</p>
+                <p class="resume-item-date">Jan 2020 - Aug 2024</p>
+              </div>
+              <img src="images/29_126.svg" alt="decoration" class="resume-item-decor">
             </div>
-        </div>
-    </section>
+            <p class="resume-item-description">Relevant coursework: Network Security, Systems Administration, Database Management, Software Engineering</p>
+          </li>
+          <li class="resume-item">
+            <div class="resume-item-header">
+              <div class="resume-avatar">
+                <img src="images/29_137.svg" alt="Foundation icon">
+              </div>
+              <div class="resume-item-info">
+                <p class="resume-item-title">Mawhiba Program Scholar, King Abdulaziz and his Companions Foundation for Giftedness and Creativity</p>
+                <p class="resume-item-date">2014 - 2018</p>
+              </div>
+              <img src="images/14_1442.svg" alt="decoration" class="resume-item-decor">
+            </div>
+            <p class="resume-item-description">Relevant coursework: Network Security, Systems Administration, Database Management, Software Engineering</p>
+          </li>
+        </ul>
+      </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; <span id="current-year"></span> <span lang="ar">سلطان عايض. جميع الحقوق محفوظة.</span><span lang="en" style="display:none;">Sultan Ayidh. All rights reserved.</span></p>
-        </div>
-    </footer>
+      <div class="resume-card" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="resume-card-title">Skills</h3>
+        <ul class="resume-list">
+          <li class="resume-item">
+            <div class="resume-item-header">
+              <div class="resume-avatar">
+                <!--merged image-->
+                <div class="merged-icon">
+                  <img src="images/32_163.svg" alt="skill icon part" style="position:absolute; left:11.37px; top:4.04px;">
+                  <img src="images/32_165.svg" alt="skill icon part" style="position:absolute; left:11.37px; top:13.07px;">
+                  <img src="images/32_167.svg" alt="skill icon part" style="position:absolute; left:11.37px; top:22.09px;">
+                  <img src="images/32_169.svg" alt="skill icon part" style="position:absolute; left:0.00px; top:11.57px;">
+                  <img src="images/32_171.svg" alt="skill icon part" style="position:absolute; left:0.00px; top:2.54px;">
+                  <img src="images/32_173.svg" alt="skill icon part" style="position:absolute; left:0.00px; top:20.59px;">
+                </div>
+              </div>
+              <div class="resume-item-info">
+                <p class="resume-item-title">Technical Skills</p>
+              </div>
+              <img src="images/14_1477.svg" alt="decoration" class="resume-item-decor">
+            </div>
+            <div class="resume-item-description">
+              <ul>
+                <li><strong>Operating Systems:</strong> Windows, macOS, Linux (Administration &amp; Troubleshooting)</li>
+                <li><strong>Programming &amp; Scripting:</strong> Python, HTML/CSS, JavaScript</li>
+                <li><strong>Networking:</strong> TCP/IP, DNS, DHCP, VPN, Firewall Configuration &amp; Security</li>
+                <li><strong>Cloud Platforms:</strong> AWS (EC2, IAM, S3, CloudWatch), Microsoft Azure</li>
+                <li><strong>Tools &amp; Virtualization:</strong> Microsoft Office Suite, VMware</li>
+              </ul>
+            </div>
+          </li>
+          <li class="resume-item">
+            <div class="resume-item-header">
+              <div class="resume-avatar">
+                <!--merged image-->
+                <div class="merged-icon">
+                  <img src="images/32_179.svg" alt="skill icon part" style="position:absolute; left:11.37px; top:4.04px;">
+                  <img src="images/32_181.svg" alt="skill icon part" style="position:absolute; left:11.37px; top:13.07px;">
+                  <img src="images/32_183.svg" alt="skill icon part" style="position:absolute; left:11.37px; top:22.09px;">
+                  <img src="images/32_185.svg" alt="skill icon part" style="position:absolute; left:0.00px; top:11.57px;">
+                  <img src="images/32_187.svg" alt="skill icon part" style="position:absolute; left:0.00px; top:2.54px;">
+                  <img src="images/32_189.svg" alt="skill icon part" style="position:absolute; left:0.00px; top:20.59px;">
+                </div>
+              </div>
+              <div class="resume-item-info">
+                <p class="resume-item-title">Soft Skills</p>
+              </div>
+              <img src="images/14_1507.svg" alt="decoration" class="resume-item-decor">
+            </div>
+            <div class="resume-item-description">
+                <ul>
+                    <li>Effective Communication</li>
+                    <li>Teamwork &amp; Collaboration</li>
+                    <li>Problem-Solving</li>
+                    <li>Adaptability</li>
+                </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
 
-    <!-- AOS JS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Typed.js -->
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
-    <!-- Custom JS -->
-    <script src="script.js"></script>
-     <script type="module" src="fingerprint.js"></script>
+      <div class="resume-card" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="resume-card-title">Certificates</h3>
+        <ul class="resume-list">
+          <li class="resume-item">
+            <div class="resume-item-header">
+              <div class="resume-avatar">
+                <img src="images/32_195.svg" alt="Certificate icon">
+              </div>
+              <div class="resume-item-info">
+                <p class="resume-item-title">AWS Certified Cloud Practitioner</p>
+                <p class="resume-item-date">Jan 2025 - Jun 2028</p>
+              </div>
+              <img src="images/14_497.svg" alt="decoration" class="resume-item-decor">
+            </div>
+            <p class="resume-item-description">Amazon Web Services — Core AWS services and foundational cloud concepts.</p>
+          </li>
+          <li class="resume-item">
+            <div class="resume-item-header">
+              <div class="resume-avatar">
+                <img src="images/32_200.svg" alt="Certificate icon">
+              </div>
+              <div class="resume-item-info">
+                <p class="resume-item-title">Introduction to Cybersecurity</p>
+                <p class="resume-item-date">Jun 2021</p>
+              </div>
+              <img src="images/14_1314.svg" alt="decoration" class="resume-item-decor">
+            </div>
+            <p class="resume-item-description">Ministry of Communications and Information Technology — Cybersecurity fundamentals course.</p>
+          </li>
+        </ul>
+      </div>
 
+      <div class="resume-card" data-aos="fade-up" data-aos-delay="100">
+        <h3 class="resume-card-title">Memberships</h3>
+        <ul class="resume-list">
+          <li class="resume-item">
+            <div class="resume-item-header">
+              <div class="resume-avatar">
+                <img src="images/32_210.svg" alt="Community icon">
+              </div>
+              <div class="resume-item-info">
+                <p class="resume-item-title">Member, Saudi Council of Engineers (SCE)</p>
+                <p class="resume-item-date">Sep 2024- Sep 2025</p>
+              </div>
+              <img src="images/17_26.svg" alt="decoration" class="resume-item-decor">
+            </div>
+            <p class="resume-item-description">Professional registration in Information Technology specialization.</p>
+          </li>
+        </ul>
+      </div>
+      <div class="download-resume-wrapper">
+        <a href="CV.pdf" class="btn" download>
+          <img src="images/37_316.svg" alt="Download icon">
+          <span>Download Resume</span>
+        </a>
+      </div>
+    </main>
+  </div>
+</section>
+<hr class="section-divider">
+<section id="blog">
+  <div class="container blog-container">
+    <div class="blog-content" data-aos="fade-right">
+      <h2 class="blog-title">Discover Insights That Inspire</h2>
+      <p class="blog-text">Dive into my blogs for fresh ideas, expert tips, and stories that spark curiosity. Explore topics that matter to you and elevate your knowledge every day.</p>
+      <a href="https://sultanayidh.site/Blog/" class="btn" target="_blank" rel="noopener noreferrer">
+        <img src="images/43_323.svg" alt="Blog icon">
+        <span>Visit My Blog</span>
+      </a>
+    </div>
+    <div class="blog-image-wrapper" data-aos="fade-left">
+      <img src="images/43_570.svg" alt="Illustration about discovery" class="blog-image">
+    </div>
+  </div>
+</section>
+<hr class="section-divider">
+<footer id="contact">
+  <div class="container footer-container" data-aos="fade-in">
+    <div class="footer-content" data-aos="fade-right">
+      <h2 class="footer-title">Reach Out & Connect!</h2>
+      <a href="contact.html" class="btn">
+        <img src="images/1_2493.svg" alt="Email icon">
+        <span>Contact Me</span>
+      </a>
+      <div class="footer-links">
+        <a href="mailto:sultan.ayidh.it@gmail.com">sultan.ayidh.it@gmail.com</a>
+        <span>/</span>
+        <a href="https://www.linkedin.com/in/sultan-ayidh-it-tech" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <span>/</span>
+        <a href="https://wa.me/966566178680" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-image-wrapper" data-aos="fade-left">
+      <img src="images/1_2531.svg" alt="Illustration of a person on the phone" class="footer-image">
+    </div>
+  </div>
+  <div class="copyright">
+    <p>&copy; 2024 Sultan Ayidh. All rights reserved.</p>
+  </div>
+</footer>
+ <script src="script.js"></script>
+     <script type="module" src="fff.js"></script>
 </body>
-</html> 
-
+</html>
