@@ -59,6 +59,26 @@
   line-height: 1.6;
 }
 
+/* Typing Animation Styles */
+#typing-effect {
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.typed-cursor {
+  opacity: 1;
+  animation: typedjsBlink 0.7s infinite;
+  color: var(--text-color);
+}
+
+.typed-cursor.typed-cursor--blink {
+  animation: typedjsBlink 0.7s infinite;
+}
+
+@keyframes typedjsBlink {
+  50% { opacity: 0; }
+}
+
 .hero-image-wrapper {
   flex: 1;
   display: flex;
@@ -747,8 +767,6 @@
     <p>&copy; 2024 Sultan Ayidh. All rights reserved.</p>
   </div>
 </footer>
- <script src="script.js"></script>
      <script type="module" src="fff.js"></script>
 </body>
 </html>
-
