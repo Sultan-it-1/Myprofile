@@ -8,4 +8,5 @@ fpPromise
   .then(result => {
     const visitorId = result.visitorId;
     console.log(visitorId);
+
   });
