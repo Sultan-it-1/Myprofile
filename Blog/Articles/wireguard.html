@@ -1,295 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title data-ar="إعداد WireGuard VPN على سيرفر Ubuntu من الصفر" data-en="Setting up WireGuard VPN on Ubuntu Server from Scratch">
-    إعداد WireGuard VPN على سيرفر Ubuntu من الصفر
-  </title>
-  <link rel="stylesheet" href="../styles.css" />
-          <link rel="stylesheet" href="Articles.css">
-
-</head>
-<body>
-  <div class="floating-shapes">
-    <div class="shape"></div>
-    <div class="shape"></div>
-    <div class="shape"></div>
-  </div>
-
-    <header>
-        <nav class="container">
-            <div class="logo" data-ar="مدونة تقنية" data-en="Tech Blog">مدونة تقنية</div>
-            <div class="nav-links">
-                <a href="../index.html" class="nav-link" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
-                <a href="../index.html#blog" class="nav-link" data-ar="المدونة" data-en="Blog">المدونة</a>
-                <a href="../index.html#about" class="nav-link" data-ar="من نحن" data-en="About Us">من نحن</a>
-            </div>
-            <div class="controls">
-                <div class="language-selector">
-                    <button class="btn-icon" onclick="toggleLanguageDropdown()">🌐</button>
-                    <div class="dropdown" id="languageDropdown">
-                        <div class="dropdown-item" onclick="changeLanguage('ar')">العربية</div>
-                        <div class="dropdown-item" onclick="changeLanguage('en')">English</div>
-                    </div>
-                </div>
-                <button class="btn-icon" onclick="toggleTheme()" id="themeBtn">☀️</button>
-            </div>
-        </nav>
-    </header>
-
-  <main class="container">
-    <a href="../index.html#blog" class="back-btn">
-      <span data-ar="← العودة للمدونة" data-en="← Back to Blog">← العودة للمدونة</span>
-    </a>
-
-    <article class="article">
-      <h1 data-ar="إعداد WireGuard VPN على سيرفر Ubuntu من الصفر" data-en="Setting up WireGuard VPN on Ubuntu Server from Scratch">
-        إعداد WireGuard VPN على سيرفر Ubuntu من الصفر
-      </h1>
-
-      <div class="article-content">
-        <p>في هذا الشرح بنغطي خطوة بخطوة طريقة إعداد شبكة VPN باستخدام WireGuard على خادم Ubuntu. مناسب لأي شخص حاب يحمي اتصاله أو يربط عدة أجهزة بشبكة خاصة وآمنة.</p>
-
-        <h2>1️⃣ تجهيز الخادم (Cloud Server)</h2>
-        <p>أول شيء نحتاج خادم سحابي. إذا ما عندك واحد، تقدر تتبع هذا الدليل لإنشاء سيرفر على AWS:</p>
-                    <a href="aws.html" class="btn" style="display: inline-block; margin: 0.5rem 0;" data-ar="شرح إنشاء خادم AWS" data-en="AWS Server Setup Guide">شرح إنشاء خادم AWS</a>
-                
-             
-        <p>يهمنا ضروري جدا تفعيل خطوة  7. إعداد قواعد الدخول (Inbound Rules) في الدليل السابق </p>
-        <p>بعد ما تدخل على الخادم عن طريق SSH، نبدأ بالتجهيزات.</p>
-
-        <h2>2️⃣ تحديث النظام وتثبيت WireGuard</h2>
-
-<div class="code-block"> 
-  <div class="code-header">
-    <span class="code-lang">Bash</span>
-    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-  </div>
-  <pre><code class="language-bash"></code>sudo apt update && sudo apt upgrade -y
-sudo apt install wireguard -y</code></pre>
-</div>
-
-
-        <ul>
-          <li>يحدث النظام.</li>
-          <li>يثبت برنامج WireGuard.</li>
-        </ul>
-
-        <h2>3️⃣ إنشاء مفاتيح WireGuard (Private & Public)</h2>
-
-
-        <div class="code-block"> 
-  <div class="code-header">
-    <span class="code-lang">Bash</span>
-    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-  </div>
-  <pre><code class="language-bash"></code>sudo bash -c "wg genkey | tee /etc/wireguard/privatekey | wg pubkey > /etc/wireguard/publickey"</code></pre>
-</div>
-
-        <p>🔑 هذا الأمر ينشئ مفتاح خاص (<code>privatekey</code>) ومفتاح عام (<code>publickey</code>).</p>
-        <div class="note">
-          <strong>💡 ليش استخدمنا <code>bash -c</code>؟</strong><br/>
-          عشان نقدر ننفذ أمر فيه بايب <code>|</code> بصلاحيات <code>sudo</code>.
-        </div>
-
-        <h2>4️⃣ ضبط صلاحيات المفاتيح</h2>
-        
-        
-        <div class="code-block"> 
-  <div class="code-header">
-    <span class="code-lang">Bash</span>
-    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-  </div>
-  <pre><code class="language-bash"></code>sudo chmod 600 /etc/wireguard/privatekey
-sudo ls -l /etc/wireguard</code></pre>
-</div>
-
-
-
-        <p>🔒 نحمي المفتاح الخاص من الوصول غير المصرح به.</p>
-
-        <h2>5️⃣ معرفة واجهة الشبكة للسيرفر</h2>
-
-   <div class="code-block"> 
-  <div class="code-header">
-    <span class="code-lang">Bash</span>
-    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-  </div>
-  <pre><code class="language-bash"></code>ip a</code></pre>
-</div>
-
-    
-
-        <p>ابحث عن الواجهة الحقيقية (غير <code>lo</code>) اللي فيها عنوان IP مثل:</p>
-
-        <div class="code-block"> 
-  <div class="code-header">
-    <span class="code-lang">Bash</span>
-  </div>
-  <pre><code class="language-bash"></code>2: eth0: ...
-    inet 192.168.1.5/24 ...</code></pre>
-</div>
-
-   
-        <p>📌 في هذا المثال، اسم الواجهة هو <code>eth0</code>.</p>
-
-        <h2>6️⃣ إنشاء وتعديل ملف الإعداد</h2>
-        
-        
-   <div class="code-block"> 
-  <div class="code-header">
-    <span class="code-lang">Bash</span>
-    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-  </div>
-  <pre><code class="language-bash"></code>sudo nano /etc/wireguard/wg0.conf</code></pre>
-</div>
-        
-       
-
-        <h2>7️⃣ محتوى <code>wg0.conf</code> (مع الشرح)</h2>
-
-          <div class="code-block"> 
-  <div class="code-header">
-    <span class="code-lang">Bash</span>
-    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-  </div>
-  <pre><code class="language-bash"></code> [Interface]
-Address = 10.0.0.1/24
-SaveConfig = true
-PostUp = iptables -A FORWARD -i wg0 -j ACCEPT; iptables -A FORWARD -o wg0 -j ACCEPT; iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
-PostDown = iptables -D FORWARD -i wg0 -j ACCEPT; iptables -D FORWARD -o wg0 -j ACCEPT; iptables -t nat -D POSTROUTING -o eth0 -j MASQUERADE
-ListenPort = 51820
-PrivateKey = [الصق هنا المفتاح الخاص بدون مسافات]</code></pre>
-</div>
-        
-       
-        <ul>
-          <li>غير <code>eth0</code> لاسم واجهتك اللي طلع من الخطوة 5.</li>
-          <li>للحصول على المفتاح الخاص: اخرج من المحرر <code>Ctrl + X</code> ثم نفذ الأمر التالي ونسخ المفتاح:</li>
-        </ul>
-
-   <div class="code-block"> 
-  <div class="code-header">
-    <span class="code-lang">Bash</span>
-    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-  </div>
-  <pre><code class="language-bash"></code>sudo cat /etc/wireguard/privatekey</code></pre>
-</div>
-        
-
-        <h2>8️⃣ حفظ الملف والخروج من Nano</h2>
-        <ul>
-          <li>للحفظ: <code>Ctrl + O</code> ثم Enter</li>
-          <li>للخروج: <code>Ctrl + X</code></li>
-        </ul>
-
-        <h2>📱 إعداد العميل (Client)</h2>
-
-        <h2>9️⃣ تثبيت تطبيق WireGuard</h2>
-        <ul>
-          <li><strong>Android:</strong>
-          <a href="https://play.google.com/store/apps/details?id=com.wireguard.android"  style="display: inline-block; margin: 0.5rem 0;" data-ar="🔗WireGuard من Google Play" data-en="🔗WireGuard from Google Play">🔗WireGuard من Google Play</a>
-          </li>
-          <li><strong>iOS:</strong>
-           <a href="https://apps.apple.com/us/app/wireguard/id1451685025"  style="display: inline-block; margin: 0.5rem 0; " data-ar="🔗 WireGuard من App Store" data-en=" 🔗WireGuard from App Store"> 🔗WireGuard من App Store</a>
-          </li>
-        </ul>
-
-        <h2>🔟 إعداد ملف العميل</h2>
-        <p>داخل التطبيق:</p>
-        <ol style="counter-reset: step-counter; list-style: none; padding-right: 0;">
-          <li class="step" >اضغط على <code>+</code> واختر <strong>Create from scratch</strong>.</li>
-          <li class="step">اختر اسم مناسب.</li>
-          <li class="step">اضغط <strong>Generate keypair</strong>.</li>
-          <li class="step">بيعطيك مفتاح خاص وآخر عام للعميل.</li>
-          <li class="step">في Address اكتب: <code>10.0.0.2/24</code></li>
-          <li class="step">في DNS اكتب: <code>1.1.1.1</code></li>
-          <li class="step">أضف peer جديد:</li>
-        </ol>
-
-        <h3>Peer:</h3>
-        <ul>
-          <li><strong>Public key:</strong> الصق المفتاح العام اللي حصلته من السيرفر:</li>
-                  <p>تقدر تحصله عن طريق الامر التالي:</p>
-
-        </ul>
-
-        <div class="code-block"> 
-  <div class="code-header">
-    <span class="code-lang">Bash</span>
-    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-  </div>
-  <pre><code class="language-bash"></code>sudo cat /etc/wireguard/publickey</code></pre>
-</div>
-
-
-        <ul>
-          <li><strong>Endpoint:</strong> عنوان السيرفر مع البورت، مثل:</li>
-        </ul>
-        
-        <div class="code-block"> 
-  <div class="code-header">
-  </div>
-  <pre><code class="language-bash"></code>54.67.153.151:51820</code></pre>
-</div>
-
-        
-
-        <h2>1️⃣1️⃣ إضافة العميل على السيرفر</h2>
-
-           <div class="code-block"> 
-  <div class="code-header">
-    <span class="code-lang">Bash</span>
-    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-  </div>
-  <pre><code class="language-bash"></code>sudo wg set wg0 peer [public_key_client] allowed-ips 10.0.0.2/32
-sudo wg-quick save wg0</code></pre>
-</div>
-        
-
-
-        
-        <p>استبدل <code>[public_key_client]</code>  بالمفتاح العام للعميل(المفتاح اللذي انشائته في تطبيق الجوال).</p>
-
-        <h2>1️⃣2️⃣ تشغيل WireGuard تلقائيًا عند الإقلاع</h2>
-
-
-                  <div class="code-block"> 
-  <div class="code-header">
-    <span class="code-lang">Bash</span>
-    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-  </div>
-  <pre><code class="language-bash"></code>sudo systemctl start wg-quick@wg0
-sudo systemctl enable wg-quick@wg0</code></pre>
-</div>
-       
-
-        <h2>1️⃣3️⃣ التحقق من الاتصال</h2>
-
-                        <div class="code-block"> 
-  <div class="code-header">
-    <span class="code-lang">Bash</span>
-    <button class="copy-btn" onclick="copyCode(this)">Copy</button>
-  </div>
-  <pre><code class="language-bash"></code>sudo wg show</code></pre>
-</div>
-
-
-        <p>إذا شفت المفاتيح والبيانات، معناته الاتصال شغال تمام.</p>
-      </div>
-    </article>
-       <div style="text-align: center; margin: 3rem 0;">
-            <a href="../index.html#blog" class="btn" data-ar="العودة إلى المدونة" data-en="Back to Blog">العودة إلى المدونة</a>
-        </div>
-  </main>
-
-  <footer>
-    <div class="container">
-      <p data-ar="جميع الحقوق محفوظة © 2025" data-en="All rights reserved © 2025">جميع الحقوق محفوظة © 2025</p>
-    </div>
-  </footer>
-
-  <script src="../script.js"></script>
-</body>
-</html>
