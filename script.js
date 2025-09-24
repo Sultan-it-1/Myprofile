@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', function () {
   if (document.getElementById('typing-effect')) {
     new Typed('#typing-effect', {
       strings: [
-        'an IT Specialist.',
-        'a Network Security enthusiast.',
-        'a System Administrator.',
-        'a Cloud Computing practitioner.'
+        'solving complex problems.',
+        'building digital solutions.',
+        'crafting innovative technologies.',
+        'helping businesses grow.'
       ],
       typeSpeed: 50,
       backSpeed: 25,
