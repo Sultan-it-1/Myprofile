@@ -28,24 +28,31 @@ document.addEventListener('DOMContentLoaded', function () {
   const mainNav = document.querySelector('.main-nav');
   const navLinks = document.querySelectorAll('.main-nav a');
 
+  function closeMobileNav() {
+    mainNav.classList.remove('is-active');
+    mobileNavToggle.classList.remove('is-active');
+    mobileNavToggle.setAttribute('aria-expanded', 'false');
+  }
+
   if (mobileNavToggle && mainNav) {
     mobileNavToggle.addEventListener('click', () => {
       const isExpanded = mainNav.classList.toggle('is-active');
       mobileNavToggle.classList.toggle('is-active');
       mobileNavToggle.setAttribute('aria-expanded', isExpanded);
     });
-  }
 
-  // Close mobile nav when a link is clicked
-  navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (mainNav.classList.contains('is-active')) {
-        mainNav.classList.remove('is-active');
-        mobileNavToggle.classList.remove('is-active');
-        mobileNavToggle.setAttribute('aria-expanded', 'false');
+    // Close mobile nav when a link is clicked
+    navLinks.forEach(link => {
+      link.addEventListener('click', closeMobileNav);
+    });
+
+    // Close mobile nav when clicking outside of it
+    document.addEventListener('click', (event) => {
+      if (mainNav.classList.contains('is-active') && !mainNav.contains(event.target) && !mobileNavToggle.contains(event.target)) {
+        closeMobileNav();
       }
     });
-  });
+  }
 
   // Hide header on scroll down, show on scroll up
   let lastScrollTop = 0;
